@@ -8,7 +8,8 @@
 // --------------------------------------------------------------------------
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "NSString+ECCore.h"
+
+//#import "NSString+ECCore.h"
 
 #define ECAssertTest(expr, isTrueVal, expString, description, ...) \
 do { \
@@ -32,7 +33,7 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 #define ECTestAssertZero(x)						ECTestAssertTrueFormat(x == 0, @"%s should be zero, was %0x", #x, x)
 #define ECTestAssertTrue(x)						ECTestAssertTrueFormat(x, @"%s should be true", #x)
 #define ECTestAssertFalse(x)					ECTestAssertFalseFormat(x, @"%s should be false", #x)
-#define ECTestAssertStringIsEqual(x,y)			ECAssertTest([(x) isEqualToString:(y)], NO, @"" #x " and " #y " match", @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringIsEqual(x,y)			[self assertString:x matchesString:y]
 #define ECTestAssertStringBeginsWith(x,y)		ECAssertTest([x beginsWithString:y], NO, @"" #x " begins with " #y, @"Values were \"%@\" and \"%@\"", x, y)
 #define ECTestAssertStringEndsWith(x,y)			ECAssertTest([x endsWithString:y], NO, @"" #x " ends with " #y, @"Values were \"%@\" and \"%@\"", x, y)
 #define ECTestAssertStringContains(x,y)			ECAssertTest([x containsString:y], NO, @"" #x " contains " #y, @"Values were \"%@\" and \"%@\"", x, y)
@@ -62,6 +63,19 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 #define ECTestLog						NSLog
 
 @interface ECTestCase : SenTestCase
+{
+@private
+    id dynamicTestParameter;
+    NSString* dynamicTestName;
+}
+
+@property (strong, nonatomic) id dynamicTestParameter;
+@property (strong, nonatomic) NSString* dynamicTestName;
+
++ (id)testCaseWithSelector:(SEL)selector param:(id)param;
++ (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;
+
+- (void)assertString:(NSString*)string1 matchesString:(NSString*)string2;
 
 + (NSUInteger)genericCount:(id)item;
 
