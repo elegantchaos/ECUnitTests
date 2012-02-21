@@ -92,26 +92,3 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 - (NSString*)testBundlePath;
 
 @end
-
-// --------------------------------------------------------------------------
-//! This subclass has some extra support to help with
-//! constructing dynamic test suites at runtime.
-//! 
-//! This is handy when you've got a test or tests that you want
-//! to run multiple times with different parameters.
-// --------------------------------------------------------------------------
-
-@interface ECDynamicTestCase : ECTestCase
-{
-@private
-	id dynamicTestParameter;
-	NSString* dynamicTestName;
-}
-
-@property (strong, nonatomic) id dynamicTestParameter;
-@property (strong, nonatomic) NSString* dynamicTestName;
-
-+ (id)testCaseWithSelector:(SEL)selector param:(id)param;
-+ (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;
-
-@end
