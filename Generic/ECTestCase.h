@@ -9,8 +9,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-//#import "NSString+ECCore.h"
-
 #define ECAssertTest(expr, isTrueVal, expString, description, ...) \
 do { \
 BOOL _evaluatedExpression = (expr);\
@@ -23,6 +21,18 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 } \
 } while (0)
 
+// --------------------------------------------------------------------------
+// The ECTestAssert macros are generally like the STAssert
+// macros, except that they don't take a description string.
+// Instead, they generate their own description of what went
+// wrong. This is sufficient for a lot of cases, and makes the
+// test code a bit less cluttered - as often the description
+// string is pretty redundant and just repeats the logic
+// from the assertion.
+//
+// You can still use the STAssert macros too of course.
+// --------------------------------------------------------------------------
+
 #define ECTestAssertNotNilFormat				STAssertNotNil
 #define ECTestAssertNilFormat					STAssertNil
 #define ECTestAssertTrueFormat					STAssertTrue
@@ -34,9 +44,9 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 #define ECTestAssertTrue(x)						ECTestAssertTrueFormat(x, @"%s should be true", #x)
 #define ECTestAssertFalse(x)					ECTestAssertFalseFormat(x, @"%s should be false", #x)
 #define ECTestAssertStringIsEqual(x,y)			[self assertString:x matchesString:y]
-#define ECTestAssertStringBeginsWith(x,y)		ECAssertTest([x beginsWithString:y], NO, @"" #x " begins with " #y, @"Values were \"%@\" and \"%@\"", x, y)
-#define ECTestAssertStringEndsWith(x,y)			ECAssertTest([x endsWithString:y], NO, @"" #x " ends with " #y, @"Values were \"%@\" and \"%@\"", x, y)
-#define ECTestAssertStringContains(x,y)			ECAssertTest([x containsString:y], NO, @"" #x " contains " #y, @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringBeginsWith(x,y)		ECAssertTest([ECTestCase string:x beginsWithString:y], NO, @"" #x " begins with " #y, @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringEndsWith(x,y)			ECAssertTest([ECTestCase string:x endsWithString:y], NO, @"" #x " ends with " #y, @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringContains(x,y)			ECAssertTest([ECTestCase string:x containsString:y], NO, @"" #x " contains " #y, @"Values were \"%@\" and \"%@\"", x, y)
 #define ECTestAssertIsEmpty(x)					ECAssertTest([ECTestCase genericCount:x] == 0, NO, @"Object" #x "is empty", @"Value is %@", x)
 #define ECTestAssertNotEmpty(x)					ECAssertTest([ECTestCase genericCount:x] != 0, YES, @"Object" #x "is empty", @"Value is %@", x)
 #define ECTestAssertLength(x, l)				ECAssertTest([ECTestCase genericCount:x] == l, NO, @"Length of " #x " is " #l, @"Value is %@, length is %d", x, [ECTestCase genericCount:x])
@@ -62,11 +72,40 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 #define ECTestFail						STFail
 #define ECTestLog						NSLog
 
+
+// --------------------------------------------------------------------------
+//! This test case base class contains a few utilities  to help
+//! with the assertion macros above.
+// --------------------------------------------------------------------------
+
 @interface ECTestCase : SenTestCase
+
+- (void)assertString:(NSString*)string1 matchesString:(NSString*)string2;
+
++ (NSUInteger)genericCount:(id)item;
++ (BOOL)string:(NSString*)string1 beginsWithString:(NSString *)string2;
++ (BOOL)string:(NSString*)string1 endsWithString:(NSString *)string2;
++ (BOOL)string:(NSString*)string1 containsString:(NSString *)string2;
+
+- (NSBundle*)testBundle;
+- (NSURL*)testBundleURL;
+- (NSString*)testBundlePath;
+
+@end
+
+// --------------------------------------------------------------------------
+//! This subclass has some extra support to help with
+//! constructing dynamic test suites at runtime.
+//! 
+//! This is handy when you've got a test or tests that you want
+//! to run multiple times with different parameters.
+// --------------------------------------------------------------------------
+
+@interface ECDynamicTestCase : ECTestCase
 {
 @private
-    id dynamicTestParameter;
-    NSString* dynamicTestName;
+	id dynamicTestParameter;
+	NSString* dynamicTestName;
 }
 
 @property (strong, nonatomic) id dynamicTestParameter;
@@ -74,13 +113,5 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 
 + (id)testCaseWithSelector:(SEL)selector param:(id)param;
 + (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;
-
-- (void)assertString:(NSString*)string1 matchesString:(NSString*)string2;
-
-+ (NSUInteger)genericCount:(id)item;
-
-- (NSBundle*)testBundle;
-- (NSURL*)testBundleURL;
-- (NSString*)testBundlePath;
 
 @end

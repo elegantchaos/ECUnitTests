@@ -11,42 +11,6 @@
 
 @implementation ECTestCase
 
-@synthesize dynamicTestName;
-@synthesize dynamicTestParameter;
-
-+ (id)testCaseWithSelector:(SEL)selector param:(id)param
-{
-    ECTestCase* tc = [self testCaseWithSelector:selector];
-    tc.dynamicTestParameter = param;
-    
-    return tc;
-}
-
-+ (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name
-{
-    ECTestCase* tc = [self testCaseWithSelector:selector];
-    tc.dynamicTestParameter = param;
-    tc.dynamicTestName = name;
-    
-    return tc;
-}
-
-- (NSString*)name
-{
-    NSString* result;
-    
-    if (self.dynamicTestName)
-    {
-        result = [NSString stringWithFormat:@"-[%@ %@%@]", NSStringFromClass([self class]), NSStringFromSelector(self.selector), self.dynamicTestName];
-    }
-    else 
-    {
-        result = [super name];
-    }
-    
-    return result;
-}
-
 - (void)assertString:(NSString*)string1 matchesString:(NSString*)string2
 {
     NSUInteger length1 = [string1 length];
@@ -94,6 +58,53 @@
 
 
 // --------------------------------------------------------------------------
+//! Does this string begin with another string?
+//! Returns NO when passed the empty string.
+// --------------------------------------------------------------------------
+
++ (BOOL)string:(NSString*)string1 beginsWithString:(NSString *)string2
+{
+	NSRange range = [string1 rangeOfString:string2];
+	
+	return range.location == 0;
+}
+
+// --------------------------------------------------------------------------
+//! Does this string end with another string.
+//! Returns NO when passed the empty string.
+// --------------------------------------------------------------------------
+
++ (BOOL)string:(NSString*)string1 endsWithString:(NSString *)string2
+{
+	NSUInteger length = [string2 length];
+	BOOL result = length > 0;
+	if (result)
+	{
+		NSUInteger ourLength = [string1 length];
+		result = (length <= ourLength);
+		if (result)
+		{
+			NSString* substring = [string1 substringFromIndex:ourLength - length];
+			result = [string2 isEqualToString:substring];
+		}
+	}
+	
+	return result;
+}
+
+// --------------------------------------------------------------------------
+//! Does this string contain another string?
+//! Returns NO when passed the empty string.
+// --------------------------------------------------------------------------
+
++ (BOOL)string:(NSString*)string1 containsString:(NSString *)string2
+{
+	NSRange range = [string1 rangeOfString:string2];
+	
+	return range.location != NSNotFound;
+}
+
+// --------------------------------------------------------------------------
 //! Return file path for a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
@@ -127,6 +138,47 @@
 	NSBundle* bundle = [NSBundle bundleWithPath:[self testBundlePath]];
 	
 	return bundle;
+}
+
+@end
+
+
+@implementation ECDynamicTestCase
+
+@synthesize dynamicTestName;
+@synthesize dynamicTestParameter;
+
++ (id)testCaseWithSelector:(SEL)selector param:(id)param
+{
+    ECDynamicTestCase* tc = [self testCaseWithSelector:selector];
+    tc.dynamicTestParameter = param;
+    
+    return tc;
+}
+
++ (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name
+{
+    ECDynamicTestCase* tc = [self testCaseWithSelector:selector];
+    tc.dynamicTestParameter = param;
+    tc.dynamicTestName = name;
+    
+    return tc;
+}
+
+- (NSString*)name
+{
+    NSString* result;
+    
+    if (self.dynamicTestName)
+    {
+        result = [NSString stringWithFormat:@"-[%@ %@%@]", NSStringFromClass([self class]), NSStringFromSelector(self.selector), self.dynamicTestName];
+    }
+    else 
+    {
+        result = [super name];
+    }
+    
+    return result;
 }
 
 @end
