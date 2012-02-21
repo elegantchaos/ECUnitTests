@@ -111,11 +111,10 @@
 - (NSString*)testBundlePath
 {
 	// find test bundle in our resources
-	char  buffer[PATH_MAX];
-	const char* path = getcwd(buffer, PATH_MAX);
-	NSString* result = [NSString stringWithFormat:@"%s/Modules/ECCore/Resources/Tests/Test.bundle", path];
+	NSBundle* ourBundle = [NSBundle bundleForClass:[self class]];
+	NSString* path = [ourBundle pathForResource:@"Test" ofType:@"bundle"];
 	
-	return result;
+	return path;
 }
 
 // --------------------------------------------------------------------------
