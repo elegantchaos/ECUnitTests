@@ -43,14 +43,15 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 #define ECTestAssertZero(x)						ECTestAssertTrueFormat(x == 0, @"%s should be zero, was %0x", #x, x)
 #define ECTestAssertTrue(x)						ECTestAssertTrueFormat(x, @"%s should be true", #x)
 #define ECTestAssertFalse(x)					ECTestAssertFalseFormat(x, @"%s should be false", #x)
-#define ECTestAssertStringIsEqual(x,y)			[self assertString:x matchesString:y]
-#define ECTestAssertStringBeginsWith(x,y)		ECAssertTest([ECTestCase string:x beginsWithString:y], NO, @"" #x " begins with " #y, @"Values were \"%@\" and \"%@\"", x, y)
-#define ECTestAssertStringEndsWith(x,y)			ECAssertTest([ECTestCase string:x endsWithString:y], NO, @"" #x " ends with " #y, @"Values were \"%@\" and \"%@\"", x, y)
-#define ECTestAssertStringContains(x,y)			ECAssertTest([ECTestCase string:x containsString:y], NO, @"" #x " contains " #y, @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringIsEqual(x,y)			ECAssertTest([(x) isEqualToString:(y)], NO, @"" #x " and " #y " match", @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringBeginsWith(x,y)		ECAssertTest([x beginsWithString:y], NO, @"" #x " begins with " #y, @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringEndsWith(x,y)			ECAssertTest([x endsWithString:y], NO, @"" #x " ends with " #y, @"Values were \"%@\" and \"%@\"", x, y)
+#define ECTestAssertStringContains(x,y)			ECAssertTest([x containsString:y], NO, @"" #x " contains " #y, @"Values were \"%@\" and \"%@\"", x, y)
 #define ECTestAssertIsEmpty(x)					ECAssertTest([ECTestCase genericCount:x] == 0, NO, @"Object" #x "is empty", @"Value is %@", x)
 #define ECTestAssertNotEmpty(x)					ECAssertTest([ECTestCase genericCount:x] != 0, YES, @"Object" #x "is empty", @"Value is %@", x)
 #define ECTestAssertLength(x, l)				ECAssertTest([ECTestCase genericCount:x] == l, NO, @"Length of " #x " is " #l, @"Value is %@, length is %d", x, [ECTestCase genericCount:x])
 #define ECTestAssertIsEqual(x, y)				ECAssertTest([x isEqual:y], NO, @"" #x " and " #y " are equal", @"Values were %@ and %@", x, y)
+#define ECTestAssertTextIsEqual(x,y)			[self assertString:x matchesString:y]
 
 #define ECTestAssertOperator(x,t,y,f)			ECAssertTest((x) t (y), NO, @"" #x #t #y, @"Values are " f " and " f ")", x, y)
 
