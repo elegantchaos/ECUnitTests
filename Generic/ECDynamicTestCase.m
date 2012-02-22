@@ -37,7 +37,7 @@
     
     if (self.dynamicTestName)
     {
-        result = [NSString stringWithFormat:@"-[%@ %@%@]", NSStringFromClass([self class]), NSStringFromSelector(self.selector), self.dynamicTestName];
+        result = [NSString stringWithFormat:@"-[%@ %@]", NSStringFromClass([self class]), self.dynamicTestName];
     }
     else 
     {
