@@ -14,16 +14,16 @@
 
 // --------------------------------------------------------------------------
 //! Return the default test suite.
-//! We don't want ECTestCase or ECDynamicTestCase to
-//! show up in the unit test output, since they are simply
-//! abstract classes to provide extra functionality.
+//! We don't want ECTestCase to show up in the unit test
+//! output, since it is an abstract class and has no tests of
+//! its own.
 //! So we suppress generation of a suite for these classes.
 // --------------------------------------------------------------------------
 
 + (id) defaultTestSuite
 {
     id result = nil;
-    if ((self != [ECTestCase class]) && (self != [ECDynamicTestCase class]))
+    if (self != [ECTestCase class])
     {
         result = [super defaultTestSuite];
     }

@@ -90,29 +90,33 @@
 
 + (id) defaultTestSuite
 {
-    SenTestSuite* suite = [[SenTestSuite alloc] initWithName:NSStringFromClass(self)];
+    SenTestSuite* result = nil;
     NSDictionary* data = [self dynamicTestData];
-    
-    unsigned int methodCount;
-    Method* methods = class_copyMethodList([self class], &methodCount);
-    for (NSUInteger n = 0; n < methodCount; ++n)
+    if (data)
     {
-        SEL selector = method_getName(methods[n]);
-        NSString* name = NSStringFromSelector(selector);
-        if ([name rangeOfString:@"dynamicTest"].location == 0)
+        result = [[SenTestSuite alloc] initWithName:NSStringFromClass(self)];
+        unsigned int methodCount;
+        Method* methods = class_copyMethodList([self class], &methodCount);
+        for (NSUInteger n = 0; n < methodCount; ++n)
         {
-            SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
-            for (NSString* testName in data)
+            SEL selector = method_getName(methods[n]);
+            NSString* name = NSStringFromSelector(selector);
+            if ([name rangeOfString:@"dynamicTest"].location == 0)
             {
-                NSDictionary* testData = [data objectForKey:testName];
-                [subSuite addTest:[self testCaseWithSelector:selector param:testData name:testName]];
+                SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
+                for (NSString* testName in data)
+                {
+                    NSDictionary* testData = [data objectForKey:testName];
+                    [subSuite addTest:[self testCaseWithSelector:selector param:testData name:testName]];
+                }
+                [result addTest:subSuite];
+                [subSuite release];
             }
-            [suite addTest:subSuite];
-            [subSuite release];
         }
+        
     }
-    
-    return [suite autorelease];
+
+    return [result autorelease];
 }
 
 @end
