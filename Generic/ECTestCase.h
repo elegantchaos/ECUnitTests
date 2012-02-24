@@ -82,6 +82,10 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 // --------------------------------------------------------------------------
 
 @interface ECTestCase : SenTestCase
+{
+@private
+    BOOL exitRunLoop;
+}
 
 - (void)assertString:(NSString*)string1 matchesString:(NSString*)string2;
 
@@ -93,5 +97,8 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 - (NSBundle*)exampleBundle;
 - (NSURL*)exampleBundleURL;
 - (NSString*)exampleBundlePath;
+
+- (void)runUntilTimeToExit;
+- (void)timeToExitRunLoop;
 
 @end

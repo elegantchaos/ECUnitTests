@@ -166,5 +166,26 @@
 	return bundle;
 }
 
+// --------------------------------------------------------------------------
+//! Some tests need the run loop to run for a while, for example
+//! to perform an asynchronous network request.
+//! This method runs until something external (such as a 
+//! delegate method) sets the exitRunLoop flag.
+// --------------------------------------------------------------------------
+
+- (void)runUntilTimeToExit
+{
+    exitRunLoop = NO;
+    while (!exitRunLoop)
+    {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+    }
+}
+
+- (void)timeToExitRunLoop
+{
+    exitRunLoop = YES;
+}
+
 @end
 
