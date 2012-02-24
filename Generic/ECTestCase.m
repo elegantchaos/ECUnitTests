@@ -8,8 +8,35 @@
 // --------------------------------------------------------------------------
 
 #import "ECTestCase.h"
+#import "ECDynamicTestCase.h"
 
 @implementation ECTestCase
+
+// --------------------------------------------------------------------------
+//! Return the default test suite.
+//! We don't want ECTestCase or ECDynamicTestCase to
+//! show up in the unit test output, since they are simply
+//! abstract classes to provide extra functionality.
+//! So we suppress generation of a suite for these classes.
+// --------------------------------------------------------------------------
+
++ (id) defaultTestSuite
+{
+    id result = nil;
+    if ((self != [ECTestCase class]) && (self != [ECDynamicTestCase class]))
+    {
+        result = [super defaultTestSuite];
+    }
+    
+    return result;
+}
+
+// --------------------------------------------------------------------------
+//! Perform some more detailed checking of two bits of text.
+//! If they don't match, we report the differing lengths, and
+//! the characters where they diverge, as well as the full
+//! text of both strings.
+// --------------------------------------------------------------------------
 
 - (void)assertString:(NSString*)string1 matchesString:(NSString*)string2
 {
@@ -108,7 +135,7 @@
 //! Return file path for a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
-- (NSString*)testBundlePath
+- (NSString*)exampleBundlePath
 {
 	// find test bundle in our resources
 	NSBundle* ourBundle = [NSBundle bundleForClass:[self class]];
@@ -121,9 +148,9 @@
 //! Return file URL for a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
-- (NSURL*)testBundleURL
+- (NSURL*)exampleBundleURL
 {
-	NSURL* url = [NSURL fileURLWithPath:[self testBundlePath]];
+	NSURL* url = [NSURL fileURLWithPath:[self exampleBundlePath]];
 	
 	return url;
 }
@@ -132,9 +159,9 @@
 //! Return a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
-- (NSBundle*)testBundle
+- (NSBundle*)exampleBundle
 {
-	NSBundle* bundle = [NSBundle bundleWithPath:[self testBundlePath]];
+	NSBundle* bundle = [NSBundle bundleWithPath:[self exampleBundlePath]];
 	
 	return bundle;
 }

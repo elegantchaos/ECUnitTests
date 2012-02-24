@@ -90,8 +90,8 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 + (BOOL)string:(NSString*)string1 endsWithString:(NSString *)string2;
 + (BOOL)string:(NSString*)string1 containsString:(NSString *)string2;
 
-- (NSBundle*)testBundle;
-- (NSURL*)testBundleURL;
-- (NSString*)testBundlePath;
+- (NSBundle*)exampleBundle;
+- (NSURL*)exampleBundleURL;
+- (NSString*)exampleBundlePath;
 
 @end
