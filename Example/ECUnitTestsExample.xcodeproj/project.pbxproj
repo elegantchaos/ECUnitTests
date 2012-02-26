@@ -49,8 +49,8 @@
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
-				22326A4814FA99B0003055A2 /* Generic */,
-				22326A2F14FA994C003055A2 /* Example */,
+				22326A4814FA99B0003055A2 /* ECUnitTests */,
+				22326A2F14FA994C003055A2 /* Tests */,
 				223269F714FA98BB003055A2 /* Frameworks */,
 				223269F614FA98BB003055A2 /* Products */,
 			);
@@ -84,18 +84,18 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		22326A2F14FA994C003055A2 /* Example */ = {
+		22326A2F14FA994C003055A2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */,
 				22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */,
-				22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */,
-				22326A5714FAA377003055A2 /* InfoPlist.strings */,
+				22326A5C14FAA537003055A2 /* Supporting Files */,
 			);
+			name = Tests;
 			path = Example;
 			sourceTree = "<group>";
 		};
-		22326A4814FA99B0003055A2 /* Generic */ = {
+		22326A4814FA99B0003055A2 /* ECUnitTests */ = {
 			isa = PBXGroup;
 			children = (
 				22326A4914FA99B0003055A2 /* ECParameterisedTestCase.h */,
@@ -103,8 +103,17 @@
 				22326A4B14FA99B0003055A2 /* ECTestCase.h */,
 				22326A4C14FA99B0003055A2 /* ECTestCase.m */,
 			);
-			name = Generic;
+			name = ECUnitTests;
 			path = ../Generic;
+			sourceTree = "<group>";
+		};
+		22326A5C14FAA537003055A2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */,
+				22326A5714FAA377003055A2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
