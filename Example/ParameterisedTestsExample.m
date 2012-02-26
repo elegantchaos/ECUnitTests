@@ -30,7 +30,7 @@
 
 - (void)parameterisedTestExample
 {
-    STFail(@"Example test run with data item: %@", self.parameterisedTestDataItem);
+    NSLog(@"Example test run with data item: %@", self.parameterisedTestDataItem);
 }
 
 @end

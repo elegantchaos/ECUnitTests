@@ -33,6 +33,10 @@
 		22326A5814FAA377003055A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParameterisedTestsExample.plist; sourceTree = SOURCE_ROOT; };
 		22326A5D14FAA570003055A2 /* RunLoopExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopExample.m; sourceTree = SOURCE_ROOT; };
+		22C3987014FAC21000DE015C /* ocunit2junit.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = ocunit2junit.rb; sourceTree = "<group>"; };
+		22C3987114FAC21000DE015C /* test-common.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "test-common.sh"; sourceTree = "<group>"; };
+		22C3987214FAC21000DE015C /* test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
+		22C3987314FAC69E00DE015C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +55,10 @@
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
+				22C3987314FAC69E00DE015C /* README.md */,
 				22326A4814FA99B0003055A2 /* ECUnitTests */,
 				22326A2F14FA994C003055A2 /* Tests */,
+				22C3986F14FAC21000DE015C /* Scripts */,
 				223269F714FA98BB003055A2 /* Frameworks */,
 				223269F614FA98BB003055A2 /* Products */,
 			);
@@ -89,6 +95,7 @@
 		22326A2F14FA994C003055A2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				22C3987214FAC21000DE015C /* test.sh */,
 				22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */,
 				22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */,
 				22326A5D14FAA570003055A2 /* RunLoopExample.m */,
@@ -117,6 +124,16 @@
 				22326A5714FAA377003055A2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22C3986F14FAC21000DE015C /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				22C3987014FAC21000DE015C /* ocunit2junit.rb */,
+				22C3987114FAC21000DE015C /* test-common.sh */,
+			);
+			name = Scripts;
+			path = ../Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

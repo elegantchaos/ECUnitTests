@@ -1,5 +1,12 @@
 Some assorted unit-testing related utilities.
 
+There is no workspace or project for the utilities themselves - simply drop them into your project to use them.  
+
+There is however an example project which illustrates how to use ECTestCase and ECParameterisedTestCase.
+
+Contents
+========
+
 Macros
 ------
 
@@ -11,7 +18,13 @@ In practise I find that most of the time, the description is redundant, and ends
 ECTestCase
 ----------
 
-This class contains a few utility methods which support the macros.
+This class contains a few utility methods which:
+
+- support the macros
+- support using classes that need run loops from unit tests
+
+See [this blog post](http://www.bornsleepy.com/bornsleepy/run-loop-cocoa-unit-tests) for more details of the run loop support.
+
 
 ECParameterisedTestCase
 -----------------------
