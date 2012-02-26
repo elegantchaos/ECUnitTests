@@ -84,7 +84,7 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 @interface ECTestCase : SenTestCase
 {
 @private
-    BOOL exitRunLoop;
+    BOOL _exitRunLoop;
 }
 
 - (void)assertString:(NSString*)string1 matchesString:(NSString*)string2;

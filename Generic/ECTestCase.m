@@ -10,7 +10,15 @@
 #import "ECTestCase.h"
 #import "ECParameterisedTestCase.h"
 
+@interface ECTestCase()
+
+@property (assign, atomic) BOOL exitRunLoop;
+
+@end
+
 @implementation ECTestCase
+
+@synthesize exitRunLoop = _exitRunLoop;
 
 // --------------------------------------------------------------------------
 //! Return the default test suite.
@@ -175,8 +183,8 @@
 
 - (void)runUntilTimeToExit
 {
-    exitRunLoop = NO;
-    while (!exitRunLoop)
+    self.exitRunLoop = NO;
+    while (!self.exitRunLoop)
     {
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
     }
@@ -184,7 +192,7 @@
 
 - (void)timeToExitRunLoop
 {
-    exitRunLoop = YES;
+    self.exitRunLoop = YES;
 }
 
 @end
