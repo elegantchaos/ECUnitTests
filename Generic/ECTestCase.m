@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------
 
 #import "ECTestCase.h"
-#import "ECDynamicTestCase.h"
+#import "ECParameterisedTestCase.h"
 
 @implementation ECTestCase
 

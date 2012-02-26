@@ -11,21 +11,21 @@
 
 // --------------------------------------------------------------------------
 //! This subclass has some extra support to help with
-//! constructing dynamic test suites at runtime.
+//! constructing parameterised test suites at runtime.
 //! 
 //! This is handy when you've got a test or tests that you want
 //! to run multiple times with different parameters.
 // --------------------------------------------------------------------------
 
-@interface ECDynamicTestCase : ECTestCase
+@interface ECParameterisedTestCase : ECTestCase
 {
 @private
-	id dynamicTestParameter;
-	NSString* dynamicTestName;
+	id parameterisedTestDataItem;
+	NSString* parameterisedTestName;
 }
 
-@property (strong, nonatomic) id dynamicTestParameter;
-@property (strong, nonatomic) NSString* dynamicTestName;
+@property (strong, nonatomic) id parameterisedTestDataItem;
+@property (strong, nonatomic) NSString* parameterisedTestName;
 
 + (id)testCaseWithSelector:(SEL)selector param:(id)param;
 + (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;

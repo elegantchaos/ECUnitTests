@@ -7,14 +7,14 @@
 //  liberal license: http://www.elegantchaos.com/license/liberal
 // --------------------------------------------------------------------------
 
-#import "ECDynamicTestCase.h"
+#import "ECParameterisedTestCase.h"
 
 #import <objc/runtime.h>
 
-@implementation ECDynamicTestCase
+@implementation ECParameterisedTestCase
 
-@synthesize dynamicTestName;
-@synthesize dynamicTestParameter;
+@synthesize parameterisedTestName;
+@synthesize parameterisedTestDataItem;
 
 // --------------------------------------------------------------------------
 //! Make a test case with a given selector and parameter.
@@ -22,8 +22,8 @@
 
 + (id)testCaseWithSelector:(SEL)selector param:(id)param
 {
-    ECDynamicTestCase* tc = [self testCaseWithSelector:selector];
-    tc.dynamicTestParameter = param;
+    ECParameterisedTestCase* tc = [self testCaseWithSelector:selector];
+    tc.parameterisedTestDataItem = param;
     
     return tc;
 }
@@ -34,9 +34,9 @@
 
 + (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name
 {
-    ECDynamicTestCase* tc = [self testCaseWithSelector:selector];
-    tc.dynamicTestParameter = param;
-    tc.dynamicTestName = name;
+    ECParameterisedTestCase* tc = [self testCaseWithSelector:selector];
+    tc.parameterisedTestDataItem = param;
+    tc.parameterisedTestName = name;
     
     return tc;
 }
@@ -51,9 +51,9 @@
 {
     NSString* result;
     
-    if (self.dynamicTestName)
+    if (self.parameterisedTestName)
     {
-        result = [NSString stringWithFormat:@"-[%@ %@]", NSStringFromClass([self class]), self.dynamicTestName];
+        result = [NSString stringWithFormat:@"-[%@ %@]", NSStringFromClass([self class]), self.parameterisedTestName];
     }
     else 
     {
@@ -72,7 +72,7 @@
 //! that has the same name as this class, and return that.
 // --------------------------------------------------------------------------
 
-+ (NSDictionary*) dynamicTestData
++ (NSDictionary*) parameterisedTestData
 {
     NSURL* plist = [[NSBundle bundleForClass:[self class]] URLForResource:NSStringFromClass([self class]) withExtension:@"plist"];
     NSDictionary* result = [NSDictionary dictionaryWithContentsOfURL:plist];
@@ -83,7 +83,7 @@
 // --------------------------------------------------------------------------
 //! Return the tests.
 //! We iterate through our instance methods looking for ones
-//! that begin with "dynamicTest".
+//! that begin with "parameterisedTest".
 //! For each one that we find, we add a sub-suite of tests applying
 //! each item of test data in turn.
 // --------------------------------------------------------------------------
@@ -91,7 +91,7 @@
 + (id) defaultTestSuite
 {
     SenTestSuite* result = nil;
-    NSDictionary* data = [self dynamicTestData];
+    NSDictionary* data = [self parameterisedTestData];
     if (data)
     {
         result = [[SenTestSuite alloc] initWithName:NSStringFromClass(self)];
@@ -101,7 +101,7 @@
         {
             SEL selector = method_getName(methods[n]);
             NSString* name = NSStringFromSelector(selector);
-            if ([name rangeOfString:@"dynamicTest"].location == 0)
+            if ([name rangeOfString:@"parameterisedTest"].location == 0)
             {
                 SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
                 for (NSString* testName in data)
