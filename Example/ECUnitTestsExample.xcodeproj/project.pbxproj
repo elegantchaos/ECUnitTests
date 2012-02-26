@@ -14,6 +14,7 @@
 		22326A5014FAA337003055A2 /* ParameterisedTestsExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */; };
 		22326A5914FAA377003055A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22326A5714FAA377003055A2 /* InfoPlist.strings */; };
 		22326A5B14FAA3AF003055A2 /* ParameterisedTestsExample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */; };
+		22326A5E14FAA570003055A2 /* RunLoopExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A5D14FAA570003055A2 /* RunLoopExample.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ECUnitTestsExampleInfo.plist; sourceTree = SOURCE_ROOT; };
 		22326A5814FAA377003055A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParameterisedTestsExample.plist; sourceTree = SOURCE_ROOT; };
+		22326A5D14FAA570003055A2 /* RunLoopExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopExample.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */,
 				22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */,
+				22326A5D14FAA570003055A2 /* RunLoopExample.m */,
 				22326A5C14FAA537003055A2 /* Supporting Files */,
 			);
 			name = Tests;
@@ -198,6 +201,7 @@
 				22326A4D14FA99B0003055A2 /* ECParameterisedTestCase.m in Sources */,
 				22326A4E14FA99B0003055A2 /* ECTestCase.m in Sources */,
 				22326A5014FAA337003055A2 /* ParameterisedTestsExample.m in Sources */,
+				22326A5E14FAA570003055A2 /* RunLoopExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +270,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				INFOPLIST_FILE = ECUnitTestsExampleInfo.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -276,6 +281,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				INFOPLIST_FILE = ECUnitTestsExampleInfo.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
