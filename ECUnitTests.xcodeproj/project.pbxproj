@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221662BA14FB8F7B009B975D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 221662B814FB8F7B009B975D /* InfoPlist.strings */; };
 		22326A0B14FA98BB003055A2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22326A0A14FA98BB003055A2 /* SenTestingKit.framework */; };
 		22326A0C14FA98BB003055A2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223269F814FA98BB003055A2 /* Cocoa.framework */; };
 		22326A4D14FA99B0003055A2 /* ECParameterisedTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A4A14FA99B0003055A2 /* ECParameterisedTestCase.m */; };
@@ -15,9 +16,11 @@
 		22326A5914FAA377003055A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22326A5714FAA377003055A2 /* InfoPlist.strings */; };
 		22326A5B14FAA3AF003055A2 /* ParameterisedTestsExample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */; };
 		22326A5E14FAA570003055A2 /* RunLoopExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A5D14FAA570003055A2 /* RunLoopExample.m */; };
+		22D55C2714FB8B840052EA01 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223269F814FA98BB003055A2 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		221662B914FB8F7B009B975D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		223269F814FA98BB003055A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		223269FB14FA98BB003055A2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		223269FC14FA98BB003055A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -28,15 +31,14 @@
 		22326A4A14FA99B0003055A2 /* ECParameterisedTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECParameterisedTestCase.m; sourceTree = "<group>"; };
 		22326A4B14FA99B0003055A2 /* ECTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTestCase.h; sourceTree = "<group>"; };
 		22326A4C14FA99B0003055A2 /* ECTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTestCase.m; sourceTree = "<group>"; };
-		22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterisedTestsExample.m; sourceTree = SOURCE_ROOT; };
-		22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ECUnitTestsExampleInfo.plist; sourceTree = SOURCE_ROOT; };
-		22326A5814FAA377003055A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParameterisedTestsExample.plist; sourceTree = SOURCE_ROOT; };
-		22326A5D14FAA570003055A2 /* RunLoopExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopExample.m; sourceTree = SOURCE_ROOT; };
+		22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterisedTestsExample.m; sourceTree = "<group>"; };
+		22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ECUnitTestsExampleInfo.plist; path = Example/ECUnitTestsExampleInfo.plist; sourceTree = SOURCE_ROOT; };
+		22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParameterisedTestsExample.plist; sourceTree = "<group>"; };
+		22326A5D14FAA570003055A2 /* RunLoopExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopExample.m; sourceTree = "<group>"; };
 		22C3987014FAC21000DE015C /* ocunit2junit.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = ocunit2junit.rb; sourceTree = "<group>"; };
 		22C3987114FAC21000DE015C /* test-common.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "test-common.sh"; sourceTree = "<group>"; };
 		22C3987214FAC21000DE015C /* test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
-		22C3987314FAC69E00DE015C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		22D55C2614FB8B840052EA01 /* libECUnitTestsMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libECUnitTestsMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,14 +51,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22D55C2314FB8B840052EA01 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D55C2714FB8B840052EA01 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
-				22C3987314FAC69E00DE015C /* README.md */,
-				22326A4814FA99B0003055A2 /* ECUnitTests */,
+				22326A4814FA99B0003055A2 /* Generic */,
 				22326A2F14FA994C003055A2 /* Tests */,
 				22C3986F14FAC21000DE015C /* Scripts */,
 				223269F714FA98BB003055A2 /* Frameworks */,
@@ -68,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				22326A0914FA98BB003055A2 /* ECUnitTestsExample.octest */,
+				22D55C2614FB8B840052EA01 /* libECUnitTestsMac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,7 +115,7 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		22326A4814FA99B0003055A2 /* ECUnitTests */ = {
+		22326A4814FA99B0003055A2 /* Generic */ = {
 			isa = PBXGroup;
 			children = (
 				22326A4914FA99B0003055A2 /* ECParameterisedTestCase.h */,
@@ -113,15 +123,14 @@
 				22326A4B14FA99B0003055A2 /* ECTestCase.h */,
 				22326A4C14FA99B0003055A2 /* ECTestCase.m */,
 			);
-			name = ECUnitTests;
-			path = ../Generic;
+			path = Generic;
 			sourceTree = "<group>";
 		};
 		22326A5C14FAA537003055A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */,
-				22326A5714FAA377003055A2 /* InfoPlist.strings */,
+				221662B814FB8F7B009B975D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -132,11 +141,20 @@
 				22C3987014FAC21000DE015C /* ocunit2junit.rb */,
 				22C3987114FAC21000DE015C /* test-common.sh */,
 			);
-			name = Scripts;
-			path = ../Scripts;
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		22D55C2414FB8B840052EA01 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		22326A0814FA98BB003055A2 /* ECUnitTestsExample */ = {
@@ -157,6 +175,23 @@
 			productReference = 22326A0914FA98BB003055A2 /* ECUnitTestsExample.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		22D55C2514FB8B840052EA01 /* ECUnitTestsMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22D55C2E14FB8B840052EA01 /* Build configuration list for PBXNativeTarget "ECUnitTestsMac" */;
+			buildPhases = (
+				22D55C2214FB8B840052EA01 /* Sources */,
+				22D55C2314FB8B840052EA01 /* Frameworks */,
+				22D55C2414FB8B840052EA01 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ECUnitTestsMac;
+			productName = ECUnitTests;
+			productReference = 22D55C2614FB8B840052EA01 /* libECUnitTestsMac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,7 +200,7 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = 223269EF14FA98BB003055A2 /* Build configuration list for PBXProject "ECUnitTestsExample" */;
+			buildConfigurationList = 223269EF14FA98BB003055A2 /* Build configuration list for PBXProject "ECUnitTests" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -177,6 +212,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				22D55C2514FB8B840052EA01 /* ECUnitTestsMac */,
 				22326A0814FA98BB003055A2 /* ECUnitTestsExample */,
 			);
 		};
@@ -189,6 +225,7 @@
 			files = (
 				22326A5914FAA377003055A2 /* InfoPlist.strings in Resources */,
 				22326A5B14FAA3AF003055A2 /* ParameterisedTestsExample.plist in Resources */,
+				221662BA14FB8F7B009B975D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,16 +259,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22D55C2214FB8B840052EA01 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		22326A5714FAA377003055A2 /* InfoPlist.strings */ = {
+		221662B814FB8F7B009B975D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				22326A5814FAA377003055A2 /* en */,
+				221662B914FB8F7B009B975D /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
+		};
+		22326A5714FAA377003055A2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+			);
+			name = InfoPlist.strings;
+			path = "/Volumes/data/Work/projects/com/elegantchaos/libraries/objective c/ECUnitTests/Example";
+			sourceTree = "<absolute>";
 		};
 /* End PBXVariantGroup section */
 
@@ -285,7 +337,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				INFOPLIST_FILE = ECUnitTestsExampleInfo.plist;
+				INFOPLIST_FILE = Example/ECUnitTestsExampleInfo.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = octest;
@@ -296,17 +348,35 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				INFOPLIST_FILE = ECUnitTestsExampleInfo.plist;
+				INFOPLIST_FILE = Example/ECUnitTestsExampleInfo.plist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
+		22D55C2F14FB8B840052EA01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = includes/ecunittests;
+			};
+			name = Debug;
+		};
+		22D55C3014FB8B840052EA01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = includes/ecunittests;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		223269EF14FA98BB003055A2 /* Build configuration list for PBXProject "ECUnitTestsExample" */ = {
+		223269EF14FA98BB003055A2 /* Build configuration list for PBXProject "ECUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22326A1914FA98BC003055A2 /* Debug */,
@@ -320,6 +390,15 @@
 			buildConfigurations = (
 				22326A1F14FA98BC003055A2 /* Debug */,
 				22326A2014FA98BC003055A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22D55C2E14FB8B840052EA01 /* Build configuration list for PBXNativeTarget "ECUnitTestsMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D55C2F14FB8B840052EA01 /* Debug */,
+				22D55C3014FB8B840052EA01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
