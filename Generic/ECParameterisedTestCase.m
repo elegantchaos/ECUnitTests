@@ -42,6 +42,28 @@
 }
 
 // --------------------------------------------------------------------------
+//! Return a cleaned up version of the name, as a CamelCase string.
+// --------------------------------------------------------------------------
+
++ (NSString*)cleanedName:(NSString*)name
+{
+    NSString* result = name;
+    NSCharacterSet* separators = [NSCharacterSet whitespaceCharacterSet];
+    NSArray* words = [name componentsSeparatedByCharactersInSet:separators];
+    if ([words count] > 1)
+    {
+        NSMutableString* cleaned = [NSMutableString stringWithCapacity:[name length]];
+        for (NSString* word in words)
+        {
+            [cleaned appendString:[word capitalizedString]];
+        }
+        result = cleaned;
+    }
+
+    return result;
+}
+
+// --------------------------------------------------------------------------
 //! Return the test case's name.
 //! If we've overridden the default method name, we return
 //! that, otherwise we do the default thing.
@@ -106,8 +128,9 @@
                 SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
                 for (NSString* testName in data)
                 {
+                    NSString* cleanName = [self cleanedName:testName];
                     NSDictionary* testData = [data objectForKey:testName];
-                    [subSuite addTest:[self testCaseWithSelector:selector param:testData name:testName]];
+                    [subSuite addTest:[self testCaseWithSelector:selector param:testData name:cleanName]];
                 }
                 [result addTest:subSuite];
                 [subSuite release];
