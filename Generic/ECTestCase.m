@@ -186,7 +186,7 @@
     self.exitRunLoop = NO;
     while (!self.exitRunLoop)
     {
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
     }
 }
 

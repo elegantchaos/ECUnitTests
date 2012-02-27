@@ -9,6 +9,9 @@
 #import "ECParameterisedTestCase.h"
 
 @interface RunLoopExample : ECTestCase
+{
+    NSMutableData* _data;
+}
 
 @property (strong, nonatomic) NSMutableData* data;
 
@@ -16,7 +19,7 @@
 
 @implementation RunLoopExample
 
-@synthesize data;
+@synthesize data = _data;
 
 #pragma mark - Tests
 
