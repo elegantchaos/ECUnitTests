@@ -1,8 +1,12 @@
 Some assorted unit-testing related utilities.
 
-There is no workspace or project for the utilities themselves - simply drop them into your project to use them.  
+Project
+=======
 
-There is however an example project which illustrates how to use ECTestCase and ECParameterisedTestCase.
+There project contains two targets for building Mac and iOS static libraries. 
+
+It also contains a target with some example unit tests in it, which illustrate how to use ECTestCase and ECParameterisedTestCase.
+
 
 Contents
 ========
