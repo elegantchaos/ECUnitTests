@@ -13,6 +13,14 @@
 
 @implementation ECParameterisedTestCase
 
+// --------------------------------------------------------------------------
+//! Standard keys.
+// --------------------------------------------------------------------------
+
+NSString *const DataItems = @"ECTestData";
+NSString *const ChildItems = @"ECTestChildren";
+NSString *const SuiteExtension = @"testsuite";
+
 @synthesize parameterisedTestName;
 @synthesize parameterisedTestDataItem;
 
@@ -89,6 +97,94 @@
 #pragma mark - Tests
 
 // --------------------------------------------------------------------------
+//! Build up data for an item from a folder
+// --------------------------------------------------------------------------
+
++ (NSDictionary*)parameterisedTestDataFromItem:(NSURL*)folder
+{
+    
+    // if there's a testdata.plist here, add values from it
+    NSMutableDictionary* result = nil;
+    NSFileManager* fm = [NSFileManager defaultManager];
+    BOOL isDirectory;
+    
+    if ([fm fileExistsAtPath:[folder path] isDirectory:&isDirectory] && isDirectory)
+    {
+        result = [NSMutableDictionary dictionary];
+        NSError* error = nil;
+        NSArray* itemURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:folder includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants error:&error];
+        for (NSURL* item in itemURLs)
+        {
+            NSString* fullName = [item lastPathComponent];
+            NSString* name = [fullName stringByDeletingPathExtension];
+            if ([fullName isEqualToString:@"testdata.plist"])
+            {
+                NSDictionary* entries = [NSDictionary dictionaryWithContentsOfURL:item];
+                [result addEntriesFromDictionary:entries];
+            }
+            else
+            {
+                id value = [NSString stringWithContentsOfURL:item encoding:NSUTF8StringEncoding error:&error];
+                if (!value)
+                {
+                    value = item;
+                }
+                [result setObject:value forKey:name];
+            }
+        }
+    }
+    
+    return result;
+}
+
+// --------------------------------------------------------------------------
+//! Recurse through a directory structure building up a dictionary from it.
+// --------------------------------------------------------------------------
+
++ (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder
+{
+    
+    // if there's a testdata.plist here, add values from it
+    NSMutableDictionary* result = nil;
+    NSFileManager* fm = [NSFileManager defaultManager];
+    BOOL isDirectory;
+    
+    if ([fm fileExistsAtPath:[folder path] isDirectory:&isDirectory] && isDirectory)
+    {
+        result = [NSMutableDictionary dictionary];
+        NSError* error = nil;
+        NSArray* itemURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:folder includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants error:&error];
+        NSMutableDictionary* items = [NSMutableDictionary dictionary];
+        NSMutableDictionary* children = [NSMutableDictionary dictionary];
+        for (NSURL* item in itemURLs)
+        {
+            NSString* fullName = [item lastPathComponent];
+            NSString* name = [fullName stringByDeletingPathExtension];
+            NSString* extension = [fullName pathExtension];
+            if ([extension isEqualToString:SuiteExtension])
+            {
+                NSDictionary* itemData = [self parameterisedTestDataFromFolder:item];
+                [children setObject:itemData forKey:name];
+            }
+            else if ([fullName isEqualToString:@"testdata.plist"])
+            {
+                NSDictionary* entries = [NSDictionary dictionaryWithContentsOfURL:item];
+                [result addEntriesFromDictionary:entries];
+            }
+            else
+            {
+                [items setObject:[self parameterisedTestDataFromItem:item] forKey:name];
+            }
+        }
+        
+        [result setObject:children forKey:ChildItems];
+        [result setObject:items forKey:DataItems];
+    }
+
+    return result;
+}
+
+// --------------------------------------------------------------------------
 //! Return a dictionary of test data.
 //! By default, we try to load a plist from the test bundle
 //! that has the same name as this class, and return that.
@@ -96,10 +192,53 @@
 
 + (NSDictionary*) parameterisedTestData
 {
+    NSDictionary* result;
+    
     NSURL* plist = [[NSBundle bundleForClass:[self class]] URLForResource:NSStringFromClass([self class]) withExtension:@"plist"];
-    NSDictionary* result = [NSDictionary dictionaryWithContentsOfURL:plist];
+    if (plist)
+    {
+        result = [NSDictionary dictionaryWithContentsOfURL:plist];
+        if (![result objectForKey:DataItems])
+        {
+            result = [NSDictionary dictionaryWithObject:result forKey:DataItems];
+        }
+    }
+    else 
+    {
+        NSURL* folder = [[NSBundle bundleForClass:[self class]] URLForResource:NSStringFromClass([self class]) withExtension:SuiteExtension];
+        if (folder)
+        {
+            result = [self parameterisedTestDataFromFolder:folder];
+        }
+        else 
+        {
+            result = nil;
+        }
+    }
     
     return result;
+}
+
++ (SenTestSuite*)suiteForSelector:(SEL)selector name:(NSString*)name data:(NSDictionary*)data
+{
+    SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
+    NSDictionary* items = [data objectForKey:DataItems];
+    for (NSString* testName in items)
+    {
+        NSString* cleanName = [self cleanedName:testName];
+        NSDictionary* testData = [items objectForKey:testName];
+        [subSuite addTest:[self testCaseWithSelector:selector param:testData name:cleanName]];
+    }
+
+    NSDictionary* children = [data objectForKey:ChildItems];
+    for (NSString* childName in children)
+    {
+        NSDictionary* childData = [children objectForKey:childName];
+        SenTestSuite* childSuite = [self suiteForSelector:selector name:childName data:childData];
+        [subSuite addTest:childSuite];
+    }
+    
+    return [subSuite autorelease];
 }
 
 // --------------------------------------------------------------------------
@@ -125,18 +264,10 @@
             NSString* name = NSStringFromSelector(selector);
             if ([name rangeOfString:@"parameterisedTest"].location == 0)
             {
-                SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
-                for (NSString* testName in data)
-                {
-                    NSString* cleanName = [self cleanedName:testName];
-                    NSDictionary* testData = [data objectForKey:testName];
-                    [subSuite addTest:[self testCaseWithSelector:selector param:testData name:cleanName]];
-                }
+                SenTestSuite* subSuite = [self suiteForSelector:selector name:name data:data];
                 [result addTest:subSuite];
-                [subSuite release];
             }
         }
-        
     }
 
     return [result autorelease];

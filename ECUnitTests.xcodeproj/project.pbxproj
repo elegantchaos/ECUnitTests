@@ -43,6 +43,8 @@
 		22326A5914FAA377003055A2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22326A5714FAA377003055A2 /* InfoPlist.strings */; };
 		22326A5B14FAA3AF003055A2 /* ParameterisedTestsExample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */; };
 		22326A5E14FAA570003055A2 /* RunLoopExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A5D14FAA570003055A2 /* RunLoopExample.m */; };
+		225E906414FCFFF000FA3847 /* HierarchicalExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 225E906214FCFFF000FA3847 /* HierarchicalExample.m */; };
+		225E906514FCFFF000FA3847 /* HierarchicalExample.testsuite in Resources */ = {isa = PBXBuildFile; fileRef = 225E906314FCFFF000FA3847 /* HierarchicalExample.testsuite */; };
 		22D55C2714FB8B840052EA01 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223269F814FA98BB003055A2 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +90,8 @@
 		22326A5114FAA34D003055A2 /* ECUnitTestsExampleInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ECUnitTestsExampleInfo.plist; path = Example/ECUnitTestsExampleInfo.plist; sourceTree = SOURCE_ROOT; };
 		22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ParameterisedTestsExample.plist; sourceTree = "<group>"; };
 		22326A5D14FAA570003055A2 /* RunLoopExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunLoopExample.m; sourceTree = "<group>"; };
+		225E906214FCFFF000FA3847 /* HierarchicalExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HierarchicalExample.m; sourceTree = "<group>"; };
+		225E906314FCFFF000FA3847 /* HierarchicalExample.testsuite */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HierarchicalExample.testsuite; sourceTree = "<group>"; };
 		22C3987014FAC21000DE015C /* ocunit2junit.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = ocunit2junit.rb; sourceTree = "<group>"; };
 		22C3987114FAC21000DE015C /* test-common.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "test-common.sh"; sourceTree = "<group>"; };
 		22C3987214FAC21000DE015C /* test.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = test.sh; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				22C3987214FAC21000DE015C /* test.sh */,
 				22326A4F14FAA337003055A2 /* ParameterisedTestsExample.m */,
 				22326A5A14FAA3AF003055A2 /* ParameterisedTestsExample.plist */,
+				225E906214FCFFF000FA3847 /* HierarchicalExample.m */,
+				225E906314FCFFF000FA3847 /* HierarchicalExample.testsuite */,
 				22326A5D14FAA570003055A2 /* RunLoopExample.m */,
 				22326A5C14FAA537003055A2 /* Supporting Files */,
 			);
@@ -321,6 +327,7 @@
 				22326A5914FAA377003055A2 /* InfoPlist.strings in Resources */,
 				22326A5B14FAA3AF003055A2 /* ParameterisedTestsExample.plist in Resources */,
 				221662BA14FB8F7B009B975D /* InfoPlist.strings in Resources */,
+				225E906514FCFFF000FA3847 /* HierarchicalExample.testsuite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +367,7 @@
 				22326A4E14FA99B0003055A2 /* ECTestCase.m in Sources */,
 				22326A5014FAA337003055A2 /* ParameterisedTestsExample.m in Sources */,
 				22326A5E14FAA570003055A2 /* RunLoopExample.m in Sources */,
+				225E906414FCFFF000FA3847 /* HierarchicalExample.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,9 @@
 
 #import "ECTestCase.h"
 
+extern NSString *const DataItems;
+extern NSString *const ChildItems;
+
 // --------------------------------------------------------------------------
 //! This subclass has some extra support to help with
 //! constructing parameterised test suites at runtime.
@@ -29,5 +32,8 @@
 
 + (id)testCaseWithSelector:(SEL)selector param:(id)param;
 + (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;
+
++ (NSDictionary*) parameterisedTestData;
++ (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder;
 
 @end
