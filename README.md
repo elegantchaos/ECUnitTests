@@ -110,3 +110,14 @@ In the simple case, it's just a dictionary, where each entry is a test data item
 In the slightly more complex case, it contains two keys: ECTestItems and ECTestSuites. The items key contains the data items for this suite. The suites item contains data for any sub-suites (using the same data layout recursively for these sub-suites).
 
 Using this complex case it's possible to create hierarchies of test suites, to group the results more clearly.
+
+Test Data From A Directory
+--------------------------
+
+Instead of a plist, you can store your test data in a recursive directory structure.
+
+If you provide a directory with the name of the test class, and the extension "testsuite", it will get parsed into a dictionary of test data in the following way:
+
+Any .testsuite folders inside it will be added as sub-suites
+Any other folders in it will be treated as test data items
+The contents of any files inside each test data item folder will be added to the dictionary for that test as text, if possible. If not, the URL will be added instead.
