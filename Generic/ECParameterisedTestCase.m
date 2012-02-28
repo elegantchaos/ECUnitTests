@@ -124,7 +124,12 @@ NSString *const SuiteExtension = @"testsuite";
             }
             else
             {
-                id value = [NSString stringWithContentsOfURL:item encoding:NSUTF8StringEncoding error:&error];
+                NSStringEncoding encoding = NSUTF8StringEncoding;
+                id value = [NSString stringWithContentsOfURL:item usedEncoding:&encoding error:&error];
+                if (!value)
+                {
+                    value = [NSString stringWithContentsOfURL:item encoding:NSISOLatin1StringEncoding error:&error];
+                }
                 if (!value)
                 {
                     value = item;
