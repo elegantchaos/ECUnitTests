@@ -9,8 +9,8 @@
 
 #import "ECTestCase.h"
 
-extern NSString *const DataItems;
-extern NSString *const ChildItems;
+extern NSString *const TestItems;
+extern NSString *const SuiteItems;
 
 // --------------------------------------------------------------------------
 //! This subclass has some extra support to help with
@@ -33,7 +33,8 @@ extern NSString *const ChildItems;
 + (id)testCaseWithSelector:(SEL)selector param:(id)param;
 + (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;
 
-+ (NSDictionary*) parameterisedTestData;
++ (NSDictionary*)parameterisedTestData;
 + (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder;
++ (NSDictionary*)mergeTestData:(NSDictionary*)data1 withTestData:(NSDictionary*)data2;
 
 @end

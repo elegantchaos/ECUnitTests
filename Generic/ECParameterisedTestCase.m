@@ -17,8 +17,8 @@
 //! Standard keys.
 // --------------------------------------------------------------------------
 
-NSString *const DataItems = @"ECTestData";
-NSString *const ChildItems = @"ECTestChildren";
+NSString *const TestItems = @"ECTestItems";
+NSString *const SuiteItems = @"ECTestSuites";
 NSString *const SuiteExtension = @"testsuite";
 
 @synthesize parameterisedTestName;
@@ -138,7 +138,7 @@ NSString *const SuiteExtension = @"testsuite";
 }
 
 // --------------------------------------------------------------------------
-//! Recurse through a directory structure building up a dictionary from it.
+//! Recurse through a directory structure building up a dictionary of data items (and sub-suites) from it.
 // --------------------------------------------------------------------------
 
 + (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder
@@ -170,6 +170,16 @@ NSString *const SuiteExtension = @"testsuite";
             {
                 NSDictionary* entries = [NSDictionary dictionaryWithContentsOfURL:item];
                 [result addEntriesFromDictionary:entries];
+                NSArray* includes = [result objectForKey:@"includes"];
+                if (includes)
+                {
+                    NSURL* parent = [folder URLByDeletingLastPathComponent];
+                    for (NSString* include in includes)
+                    {
+                        NSDictionary* itemData = [self parameterisedTestDataFromFolder:[parent URLByAppendingPathComponent:include]];
+                        [children setObject:itemData forKey:[include stringByDeletingPathExtension]];
+                    }
+                }
             }
             else
             {
@@ -177,10 +187,11 @@ NSString *const SuiteExtension = @"testsuite";
             }
         }
         
-        [result setObject:children forKey:ChildItems];
-        [result setObject:items forKey:DataItems];
+        [result setObject:children forKey:SuiteItems];
+        [result setObject:items forKey:TestItems];
     }
 
+    
     return result;
 }
 
@@ -198,9 +209,9 @@ NSString *const SuiteExtension = @"testsuite";
     if (plist)
     {
         result = [NSDictionary dictionaryWithContentsOfURL:plist];
-        if (![result objectForKey:DataItems])
+        if (![result objectForKey:TestItems])
         {
-            result = [NSDictionary dictionaryWithObject:result forKey:DataItems];
+            result = [NSDictionary dictionaryWithObject:result forKey:TestItems];
         }
     }
     else 
@@ -219,34 +230,63 @@ NSString *const SuiteExtension = @"testsuite";
     return result;
 }
 
+// --------------------------------------------------------------------------
+//! Merge two dictionaries of test data together.
+//! Handy if we want to build up test data from multiple files or
+//! directories.
+// --------------------------------------------------------------------------
+
++ (NSDictionary*)mergeTestData:(NSDictionary*)data1 withTestData:(NSDictionary*)data2
+{
+    NSMutableDictionary* mergedItems = [NSMutableDictionary dictionaryWithDictionary:[data1 objectForKey:TestItems]];
+    [mergedItems addEntriesFromDictionary:[data2 objectForKey:TestItems]];
+     
+     NSMutableDictionary* mergedSuites = [NSMutableDictionary dictionaryWithDictionary:[data1 objectForKey:SuiteItems]];
+     [mergedSuites addEntriesFromDictionary:[data2 objectForKey:SuiteItems]];
+     
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            mergedSuites, SuiteItems,
+            mergedItems, TestItems,
+            nil];
+}
+
+// --------------------------------------------------------------------------
+//! Build a test suite for a given selector and data set.
+//! The data set can contain individual data items, and also
+//! sub-suites of items.
+// --------------------------------------------------------------------------
+
 + (SenTestSuite*)suiteForSelector:(SEL)selector name:(NSString*)name data:(NSDictionary*)data
 {
-    SenTestSuite* subSuite = [[SenTestSuite alloc] initWithName:name];
-    NSDictionary* items = [data objectForKey:DataItems];
+    SenTestSuite* result = [[SenTestSuite alloc] initWithName:name];
+    
+    // add items to the suite as tests
+    NSDictionary* items = [data objectForKey:TestItems];
     for (NSString* testName in items)
     {
         NSString* cleanName = [self cleanedName:testName];
         NSDictionary* testData = [items objectForKey:testName];
-        [subSuite addTest:[self testCaseWithSelector:selector param:testData name:cleanName]];
+        [result addTest:[self testCaseWithSelector:selector param:testData name:cleanName]];
     }
 
-    NSDictionary* children = [data objectForKey:ChildItems];
-    for (NSString* childName in children)
+    // add child suites to the test
+    NSDictionary* suites = [data objectForKey:SuiteItems];
+    for (NSString* suiteName in suites)
     {
-        NSDictionary* childData = [children objectForKey:childName];
-        SenTestSuite* childSuite = [self suiteForSelector:selector name:childName data:childData];
-        [subSuite addTest:childSuite];
+        NSDictionary* suiteData = [suites objectForKey:suiteName];
+        SenTestSuite* suite = [self suiteForSelector:selector name:suiteName data:suiteData];
+        [result addTest:suite];
     }
     
-    return [subSuite autorelease];
+    return [result autorelease];
 }
 
 // --------------------------------------------------------------------------
 //! Return the tests.
 //! We iterate through our instance methods looking for ones
 //! that begin with "parameterisedTest".
-//! For each one that we find, we add a sub-suite of tests applying
-//! each item of test data in turn.
+//! For each one that we find, we add a subsuite or suites of
+//! tests applying each item of test data in turn.
 // --------------------------------------------------------------------------
 
 + (id) defaultTestSuite
