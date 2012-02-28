@@ -119,5 +119,12 @@ Instead of a plist, you can store your test data in a recursive directory struct
 If you provide a directory with the name of the test class, and the extension "testsuite", it will get parsed into a dictionary of test data in the following way:
 
 Any .testsuite folders inside it will be added as sub-suites
+
 Any other folders in it will be treated as test data items
+
 The contents of any files inside each test data item folder will be added to the dictionary for that test as text, if possible. If not, the URL will be added instead.
+
+A file called testdata.plist in any item will be read as a dictionary, and the keys in it added to the dictionary for the item.
+
+A file called testdata.plist in any suite folder will be read and added to the data properties for that suite. This can be used to define some items on disk, and others from plists.
+
