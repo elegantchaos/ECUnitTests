@@ -15,5 +15,10 @@
 		<key>description</key>
 		<string>this is a test with a dictionary</string>
 	</dict>
+	<key>settings</key>
+	<dict>
+		<key>test setting</key>
+		<string>item key value</string>
+	</dict>
 </dict>
 </plist>

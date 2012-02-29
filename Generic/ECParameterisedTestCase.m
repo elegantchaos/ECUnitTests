@@ -17,8 +17,11 @@
 //! Standard keys.
 // --------------------------------------------------------------------------
 
-NSString *const TestItems = @"ECTestItems";
-NSString *const SuiteItems = @"ECTestSuites";
+NSString *const TestItemsKey = @"ECTestItems";
+NSString *const SuiteItemsKey = @"ECTestSuites";
+NSString *const SettingsKey = @"settings";
+NSString *const IncludesKey = @"includes";
+
 NSString *const SuiteExtension = @"testsuite";
 
 @synthesize parameterisedTestName;
@@ -100,7 +103,7 @@ NSString *const SuiteExtension = @"testsuite";
 //! Build up data for an item from a folder
 // --------------------------------------------------------------------------
 
-+ (NSDictionary*)parameterisedTestDataFromItem:(NSURL*)folder
++ (NSDictionary*)parameterisedTestDataFromItem:(NSURL*)folder settings:(NSDictionary*)settings
 {
     
     // if there's a testdata.plist here, add values from it
@@ -139,6 +142,13 @@ NSString *const SuiteExtension = @"testsuite";
         }
     }
     
+    if (settings)
+    {
+        NSMutableDictionary* temp = [NSMutableDictionary dictionaryWithDictionary:[result objectForKey:SettingsKey]];
+        [temp addEntriesFromDictionary:settings];
+        [result setObject:temp forKey:SettingsKey];
+    }
+    
     return result;
 }
 
@@ -146,7 +156,7 @@ NSString *const SuiteExtension = @"testsuite";
 //! Recurse through a directory structure building up a dictionary of data items (and sub-suites) from it.
 // --------------------------------------------------------------------------
 
-+ (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder
++ (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder settings:(NSDictionary*)settings
 {
     
     // if there's a testdata.plist here, add values from it
@@ -160,7 +170,7 @@ NSString *const SuiteExtension = @"testsuite";
         NSError* error = nil;
         NSArray* itemURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:folder includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants error:&error];
         NSMutableDictionary* items = [NSMutableDictionary dictionary];
-        NSMutableDictionary* children = [NSMutableDictionary dictionary];
+        NSMutableArray* childrenURLs = [NSMutableArray array];
         for (NSURL* item in itemURLs)
         {
             NSString* fullName = [item lastPathComponent];
@@ -168,32 +178,41 @@ NSString *const SuiteExtension = @"testsuite";
             NSString* extension = [fullName pathExtension];
             if ([extension isEqualToString:SuiteExtension])
             {
-                NSDictionary* itemData = [self parameterisedTestDataFromFolder:item];
-                [children setObject:itemData forKey:name];
+                [childrenURLs addObject:item];
             }
             else if ([fullName isEqualToString:@"testdata.plist"])
             {
                 NSDictionary* entries = [NSDictionary dictionaryWithContentsOfURL:item];
                 [result addEntriesFromDictionary:entries];
-                NSArray* includes = [result objectForKey:@"includes"];
+                NSArray* includes = [result objectForKey:IncludesKey];
                 if (includes)
                 {
                     NSURL* parent = [folder URLByDeletingLastPathComponent];
                     for (NSString* include in includes)
                     {
-                        NSDictionary* itemData = [self parameterisedTestDataFromFolder:[parent URLByAppendingPathComponent:include]];
-                        [children setObject:itemData forKey:[include stringByDeletingPathExtension]];
+                        [childrenURLs addObject:[parent URLByAppendingPathComponent:include]];
                     }
                 }
             }
             else
             {
-                [items setObject:[self parameterisedTestDataFromItem:item] forKey:name];
+                [items setObject:[self parameterisedTestDataFromItem:item settings:settings] forKey:name];
             }
         }
+
+        NSMutableDictionary* combinedSettings = [NSMutableDictionary dictionaryWithDictionary:[result objectForKey:SettingsKey]];
+        [combinedSettings addEntriesFromDictionary:settings];
+
+        NSMutableDictionary* children = [NSMutableDictionary dictionaryWithCapacity:[childrenURLs count]];
+        for (NSURL* child in childrenURLs)
+        {
+            NSString* name = [[child lastPathComponent] stringByDeletingPathExtension];
+            NSDictionary* itemData = [self parameterisedTestDataFromFolder:child settings:combinedSettings];
+            [children setObject:itemData forKey:name];
+        }
         
-        [result setObject:children forKey:SuiteItems];
-        [result setObject:items forKey:TestItems];
+        [result setObject:children forKey:SuiteItemsKey];
+        [result setObject:items forKey:TestItemsKey];
     }
 
     
@@ -214,9 +233,9 @@ NSString *const SuiteExtension = @"testsuite";
     if (plist)
     {
         result = [NSDictionary dictionaryWithContentsOfURL:plist];
-        if (![result objectForKey:TestItems])
+        if (![result objectForKey:TestItemsKey])
         {
-            result = [NSDictionary dictionaryWithObject:result forKey:TestItems];
+            result = [NSDictionary dictionaryWithObject:result forKey:TestItemsKey];
         }
     }
     else 
@@ -224,7 +243,7 @@ NSString *const SuiteExtension = @"testsuite";
         NSURL* folder = [[NSBundle bundleForClass:[self class]] URLForResource:NSStringFromClass([self class]) withExtension:SuiteExtension];
         if (folder)
         {
-            result = [self parameterisedTestDataFromFolder:folder];
+            result = [self parameterisedTestDataFromFolder:folder settings:nil];
         }
         else 
         {
@@ -243,15 +262,15 @@ NSString *const SuiteExtension = @"testsuite";
 
 + (NSDictionary*)mergeTestData:(NSDictionary*)data1 withTestData:(NSDictionary*)data2
 {
-    NSMutableDictionary* mergedItems = [NSMutableDictionary dictionaryWithDictionary:[data1 objectForKey:TestItems]];
-    [mergedItems addEntriesFromDictionary:[data2 objectForKey:TestItems]];
+    NSMutableDictionary* mergedItems = [NSMutableDictionary dictionaryWithDictionary:[data1 objectForKey:TestItemsKey]];
+    [mergedItems addEntriesFromDictionary:[data2 objectForKey:TestItemsKey]];
      
-     NSMutableDictionary* mergedSuites = [NSMutableDictionary dictionaryWithDictionary:[data1 objectForKey:SuiteItems]];
-     [mergedSuites addEntriesFromDictionary:[data2 objectForKey:SuiteItems]];
+     NSMutableDictionary* mergedSuites = [NSMutableDictionary dictionaryWithDictionary:[data1 objectForKey:SuiteItemsKey]];
+     [mergedSuites addEntriesFromDictionary:[data2 objectForKey:SuiteItemsKey]];
      
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            mergedSuites, SuiteItems,
-            mergedItems, TestItems,
+            mergedSuites, SuiteItemsKey,
+            mergedItems, TestItemsKey,
             nil];
 }
 
@@ -266,7 +285,7 @@ NSString *const SuiteExtension = @"testsuite";
     SenTestSuite* result = [[SenTestSuite alloc] initWithName:name];
     
     // add items to the suite as tests
-    NSDictionary* items = [data objectForKey:TestItems];
+    NSDictionary* items = [data objectForKey:TestItemsKey];
     for (NSString* testName in items)
     {
         NSString* cleanName = [self cleanedName:testName];
@@ -275,7 +294,7 @@ NSString *const SuiteExtension = @"testsuite";
     }
 
     // add child suites to the test
-    NSDictionary* suites = [data objectForKey:SuiteItems];
+    NSDictionary* suites = [data objectForKey:SuiteItemsKey];
     for (NSString* suiteName in suites)
     {
         NSDictionary* suiteData = [suites objectForKey:suiteName];

@@ -9,8 +9,10 @@
 
 #import "ECTestCase.h"
 
-extern NSString *const TestItems;
-extern NSString *const SuiteItems;
+extern NSString *const TestItemsKey;
+extern NSString *const SuiteItemsKey;
+extern NSString *const SettingsKey;
+extern NSString *const IncludesKey;
 
 // --------------------------------------------------------------------------
 //! This subclass has some extra support to help with
@@ -34,7 +36,7 @@ extern NSString *const SuiteItems;
 + (id)testCaseWithSelector:(SEL)selector param:(id)param name:(NSString*)name;
 
 + (NSDictionary*)parameterisedTestData;
-+ (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder;
++ (NSDictionary*)parameterisedTestDataFromFolder:(NSURL*)folder settings:(NSDictionary*)settings;
 + (NSDictionary*)mergeTestData:(NSDictionary*)data1 withTestData:(NSDictionary*)data2;
 
 @end
