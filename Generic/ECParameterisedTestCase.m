@@ -168,13 +168,12 @@ NSString *const SuiteExtension = @"testsuite";
     {
         result = [NSMutableDictionary dictionary];
         NSError* error = nil;
-        NSArray* itemURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:folder includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants error:&error];
-        NSMutableDictionary* items = [NSMutableDictionary dictionary];
+        NSArray* contents = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:folder includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsSubdirectoryDescendants error:&error];
         NSMutableArray* childrenURLs = [NSMutableArray array];
-        for (NSURL* item in itemURLs)
+        NSMutableArray* itemURLs = [NSMutableArray array];
+        for (NSURL* item in contents)
         {
             NSString* fullName = [item lastPathComponent];
-            NSString* name = [fullName stringByDeletingPathExtension];
             NSString* extension = [fullName pathExtension];
             if ([extension isEqualToString:SuiteExtension])
             {
@@ -196,7 +195,7 @@ NSString *const SuiteExtension = @"testsuite";
             }
             else
             {
-                [items setObject:[self parameterisedTestDataFromItem:item settings:settings] forKey:name];
+                [itemURLs addObject:item];
             }
         }
 
@@ -209,6 +208,13 @@ NSString *const SuiteExtension = @"testsuite";
             NSString* name = [[child lastPathComponent] stringByDeletingPathExtension];
             NSDictionary* itemData = [self parameterisedTestDataFromFolder:child settings:combinedSettings];
             [children setObject:itemData forKey:name];
+        }
+        
+        NSMutableDictionary* items = [NSMutableDictionary dictionary];
+        for (NSURL* item in itemURLs)
+        {
+            NSString* name = [[item lastPathComponent] stringByDeletingPathExtension];
+            [items setObject:[self parameterisedTestDataFromItem:item settings:combinedSettings] forKey:name];
         }
         
         [result setObject:children forKey:SuiteItemsKey];
