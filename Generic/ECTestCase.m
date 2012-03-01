@@ -48,21 +48,13 @@
 
 - (void)assertString:(NSString*)string1 matchesString:(NSString*)string2
 {
-    NSUInteger length1 = [string1 length];
-    NSUInteger length2 = [string2 length];
-    
-    STAssertTrue(length1 == length2, @"string lengths don't match: was %ld expected %ld \n\nwas:\n%@\n\nexpected:\n%@", length1, length2, string1, string2); 
-    
-    NSUInteger safeLength = MIN(length1, length2);
-    for (NSUInteger n = 0; n < safeLength; ++n)
+    if (![string1 isEqualToString:string2])
     {
-        UniChar c1 = [string1 characterAtIndex:n];
-        UniChar c2 = [string2 characterAtIndex:n];
-        STAssertTrue(c1 == c2, @"Comparison failed at character %ld (was 0x%x '%c' expected 0x%x '%c') of:\n\n%@", n, c1, c1, c2, c2, string1);
-        if (c1 != c2)
-        {
-            break; // in theory we could report every character difference, but it could get silly, so we stop after the first failure
-        }
+        NSString* prefix = [string1 commonPrefixWithString:string2 options:NSLiteralSearch];
+        NSUInteger divergence = [prefix length];
+        UniChar divergentChar = [string1 characterAtIndex:divergence];
+        UniChar expectedChar = [string2 characterAtIndex:divergence];
+        STFail(@"strings diverge at character %d ('%lc' instead of '%lc')\n\nwe expected:\n%@\n\nwe got:\n%@\n\nthe bit that matched:\n%@\n\nthe bit that didn't:\n%@", divergence, divergentChar, expectedChar, string2, string1, prefix, [string1 substringFromIndex:divergence]); 
     }
 }
 
