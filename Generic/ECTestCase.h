@@ -72,6 +72,14 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 #define ECTestFail						STFail
 #define ECTestLog						NSLog
 
+/**
+* This class contains a few utility methods which:
+*
+* - support the macros
+* - support using classes that need run loops from unit tests
+*
+* See [this blog post](http://www.bornsleepy.com/bornsleepy/run-loop-cocoa-unit-tests) for more details of the run loop support.
+*/
 
 // --------------------------------------------------------------------------
 /// This test case base class contains a few utilities  to help
