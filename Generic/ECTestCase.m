@@ -1,10 +1,7 @@
 // --------------------------------------------------------------------------
-//! @author Sam Deane
-//! @date 12/04/2011
-//
-//  Copyright 2011 Sam Deane, Elegant Chaos. All rights reserved.
-//  This source code is distributed under the terms of Elegant Chaos's 
-//  liberal license: http://www.elegantchaos.com/license/liberal
+///  Copyright 2012 Sam Deane, Elegant Chaos. All rights reserved.
+///  This source code is distributed under the terms of Elegant Chaos's
+///  liberal license: http://www.elegantchaos.com/license/liberal
 // --------------------------------------------------------------------------
 
 #import "ECTestCase.h"
@@ -21,11 +18,11 @@
 @synthesize exitRunLoop = _exitRunLoop;
 
 // --------------------------------------------------------------------------
-//! Return the default test suite.
-//! We don't want ECTestCase to show up in the unit test
-//! output, since it is an abstract class and has no tests of
-//! its own.
-//! So we suppress generation of a suite for these classes.
+/// Return the default test suite.
+/// We don't want ECTestCase to show up in the unit test
+/// output, since it is an abstract class and has no tests of
+/// its own.
+/// So we suppress generation of a suite for these classes.
 // --------------------------------------------------------------------------
 
 + (id) defaultTestSuite
@@ -40,10 +37,10 @@
 }
 
 // --------------------------------------------------------------------------
-//! Perform some more detailed checking of two bits of text.
-//! If they don't match, we report the differing lengths, and
-//! the characters where they diverge, as well as the full
-//! text of both strings.
+/// Perform some more detailed checking of two bits of text.
+/// If they don't match, we report the differing lengths, and
+/// the characters where they diverge, as well as the full
+/// text of both strings.
 // --------------------------------------------------------------------------
 
 - (void)assertString:(NSString*)string1 matchesString:(NSString*)string2
@@ -59,8 +56,8 @@
 }
 
 // --------------------------------------------------------------------------
-//! Return a count for any item that supports the count or length methods.
-//! Used in various test assert macros.
+/// Return a count for any item that supports the count or length methods.
+/// Used in various test assert macros.
 // --------------------------------------------------------------------------
 
 + (NSUInteger)genericCount:(id)item
@@ -85,8 +82,8 @@
 
 
 // --------------------------------------------------------------------------
-//! Does this string begin with another string?
-//! Returns NO when passed the empty string.
+/// Does this string begin with another string?
+/// Returns NO when passed the empty string.
 // --------------------------------------------------------------------------
 
 + (BOOL)string:(NSString*)string1 beginsWithString:(NSString *)string2
@@ -97,8 +94,8 @@
 }
 
 // --------------------------------------------------------------------------
-//! Does this string end with another string.
-//! Returns NO when passed the empty string.
+/// Does this string end with another string.
+/// Returns NO when passed the empty string.
 // --------------------------------------------------------------------------
 
 + (BOOL)string:(NSString*)string1 endsWithString:(NSString *)string2
@@ -120,8 +117,8 @@
 }
 
 // --------------------------------------------------------------------------
-//! Does this string contain another string?
-//! Returns NO when passed the empty string.
+/// Does this string contain another string?
+/// Returns NO when passed the empty string.
 // --------------------------------------------------------------------------
 
 + (BOOL)string:(NSString*)string1 containsString:(NSString *)string2
@@ -132,7 +129,7 @@
 }
 
 // --------------------------------------------------------------------------
-//! Return file path for a bundle which can be used for file tests.
+/// Return file path for a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
 - (NSString*)exampleBundlePath
@@ -145,7 +142,7 @@
 }
 
 // --------------------------------------------------------------------------
-//! Return file URL for a bundle which can be used for file tests.
+/// Return file URL for a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
 - (NSURL*)exampleBundleURL
@@ -156,7 +153,7 @@
 }
 
 // --------------------------------------------------------------------------
-//! Return a bundle which can be used for file tests.
+/// Return a bundle which can be used for file tests.
 // --------------------------------------------------------------------------
 
 - (NSBundle*)exampleBundle
@@ -167,10 +164,10 @@
 }
 
 // --------------------------------------------------------------------------
-//! Some tests need the run loop to run for a while, for example
-//! to perform an asynchronous network request.
-//! This method runs until something external (such as a 
-//! delegate method) sets the exitRunLoop flag.
+/// Some tests need the run loop to run for a while, for example
+/// to perform an asynchronous network request.
+/// This method runs until something external (such as a
+/// delegate method) sets the exitRunLoop flag.
 // --------------------------------------------------------------------------
 
 - (void)runUntilTimeToExit
