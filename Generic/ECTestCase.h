@@ -1,7 +1,4 @@
 // --------------------------------------------------------------------------
-//! @author Sam Deane
-//! @date 12/04/2011
-//
 //  Copyright 2012 Sam Deane, Elegant Chaos. All rights reserved.
 //  This source code is distributed under the terms of Elegant Chaos's 
 //  liberal license: http://www.elegantchaos.com/license/liberal
@@ -22,15 +19,15 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 } while (0)
 
 // --------------------------------------------------------------------------
-// The ECTestAssert macros are generally like the STAssert
-// macros, except that they don't take a description string.
-// Instead, they generate their own description of what went
-// wrong. This is sufficient for a lot of cases, and makes the
-// test code a bit less cluttered - as often the description
-// string is pretty redundant and just repeats the logic
-// from the assertion.
-//
-// You can still use the STAssert macros too of course.
+/// The ECTestAssert macros are generally like the STAssert
+/// macros, except that they don't take a description string.
+/// Instead, they generate their own description of what went
+/// wrong. This is sufficient for a lot of cases, and makes the
+/// test code a bit less cluttered - as often the description
+/// string is pretty redundant and just repeats the logic
+/// from the assertion.
+///
+/// You can still use the STAssert macros too of course.
 // --------------------------------------------------------------------------
 
 #define ECTestAssertNotNilFormat				STAssertNotNil
@@ -77,8 +74,8 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
 
 
 // --------------------------------------------------------------------------
-//! This test case base class contains a few utilities  to help
-//! with the assertion macros above.
+/// This test case base class contains a few utilities  to help
+/// with the assertion macros above.
 // --------------------------------------------------------------------------
 
 @interface ECTestCase : SenTestCase
