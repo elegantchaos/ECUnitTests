@@ -1,18 +1,18 @@
 <?xml version="1.0" standalone="no"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:docset="http://developer.apple.com/rss/docset_extensions" xml:lang="en">
-    <id>http://elegantchaos.github.com/objective/documentation/docset.atom/20120812172729</id>
-    <title type="text">objective Documentation</title>
+    <id>http://elegantchaos.github.com/ECUnitTests/documentation/docset.atom/20120812173649</id>
+    <title type="text">ECUnitTests Documentation</title>
     <rights>Copyright © 2012 Elegant Chaos. All rights reserved.</rights>
-    <link rel="self" href="http://elegantchaos.github.com/objective/documentation/docset.atom"></link>
+    <link rel="self" href="http://elegantchaos.github.com/ECUnitTests/documentation/docset.atom"></link>
     <docset:publisherName>Elegant Chaos</docset:publisherName>
     <docset:publisherID>com.elegantchaos.documentation</docset:publisherID>
-    <updated>2012-08-12T17:27:29+01:00</updated>
+    <updated>2012-08-12T17:36:49+01:00</updated>
     <entry>
         <id>tag:elegantchaos.github.com,2012-08-12:$COMPANYID.$PROJECT/1.0.0</id>
         <title type="text">$PROJECT</title>
-        <updated>2012-08-12T17:27:29+01:00</updated>
+        <updated>2012-08-12T17:36:49+01:00</updated>
         <content type="text">$PROJECT (v1.0.0)</content>
-        <link rel="enclosure" type="application/octet-stream" href="http://elegantchaos.github.com/objective/documentation/com.elegantchaos.objective-1.0.xar" length="31480"></link>
+        <link rel="enclosure" type="application/octet-stream" href="http://elegantchaos.github.com/ECUnitTests/documentation/com.elegantchaos.ECUnitTests-1.0.xar" length="31519"></link>
         <docset:identifier>$COMPANYID.$PROJECT</docset:identifier>
         <docset:version>1.0.0</docset:version>
         <docset:minimumXcodeVersion>3.0.0</docset:minimumXcodeVersion>
