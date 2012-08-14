@@ -39,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		221662C014FB900C009B975D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		221CB4B815DA7DC4004C6398 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		221CB4BB15DA7DC4004C6398 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		223269F814FA98BB003055A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		223269FB14FA98BB003055A2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		223269FC14FA98BB003055A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -105,6 +107,8 @@
 				22326A0A14FA98BB003055A2 /* SenTestingKit.framework */,
 				221662C014FB900C009B975D /* Foundation.framework */,
 				227A47BB15DA5FA000281601 /* CoreFoundation.framework */,
+				221CB4B815DA7DC4004C6398 /* UIKit.framework */,
+				221CB4BB15DA7DC4004C6398 /* CoreGraphics.framework */,
 				223269FA14FA98BB003055A2 /* Other Frameworks */,
 			);
 			name = Frameworks;
