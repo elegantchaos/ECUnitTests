@@ -48,10 +48,10 @@
 		221CB4B815DA7DC4004C6398 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		221CB4BB15DA7DC4004C6398 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		221CB51E15DA8BC7004C6398 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECIOSDebug.xcconfig; sourceTree = "<group>"; };
-		221CB5A115DA9BA8004C6398 /* ECIOSRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECIOSRelease.xcconfig; sourceTree = "<group>"; };
-		221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECMacDebug.xcconfig; sourceTree = "<group>"; };
-		221CB5A415DA9BA8004C6398 /* ECMacRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECMacRelease.xcconfig; sourceTree = "<group>"; };
+		221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = IOSDebug.xcconfig; sourceTree = "<group>"; };
+		221CB5A115DA9BA8004C6398 /* IOSRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = IOSRelease.xcconfig; sourceTree = "<group>"; };
+		221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MacDebug.xcconfig; sourceTree = "<group>"; };
+		221CB5A415DA9BA8004C6398 /* MacRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MacRelease.xcconfig; sourceTree = "<group>"; };
 		221CB5C415DAA817004C6398 /* Debug.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.pch; sourceTree = "<group>"; };
 		221CB5C515DAA817004C6398 /* Release.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Release.pch; sourceTree = "<group>"; };
 		221CB5C615DAA817004C6398 /* Shared.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.pch; sourceTree = "<group>"; };
@@ -97,10 +97,10 @@
 		221CB59E15DA9BA8004C6398 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */,
-				221CB5A115DA9BA8004C6398 /* ECIOSRelease.xcconfig */,
-				221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */,
-				221CB5A415DA9BA8004C6398 /* ECMacRelease.xcconfig */,
+				221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */,
+				221CB5A115DA9BA8004C6398 /* IOSRelease.xcconfig */,
+				221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */,
+				221CB5A415DA9BA8004C6398 /* MacRelease.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 		};
 		227A47C515DA5FA000281601 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */;
+			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEAD_CODE_STRIPPING = NO;
@@ -448,7 +448,7 @@
 		};
 		227A47C615DA5FA000281601 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */;
+			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEAD_CODE_STRIPPING = NO;
@@ -473,7 +473,7 @@
 		};
 		22BEA1CC15DA55920036A04F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */;
+			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -492,7 +492,7 @@
 		};
 		22BEA1CD15DA55920036A04F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */;
+			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
