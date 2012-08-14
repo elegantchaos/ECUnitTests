@@ -483,6 +483,7 @@
 				227A47C615DA5FA000281601 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22BEA1CB15DA55920036A04F /* Build configuration list for PBXNativeTarget "ECUnitTestsMac" */ = {
 			isa = XCConfigurationList;
