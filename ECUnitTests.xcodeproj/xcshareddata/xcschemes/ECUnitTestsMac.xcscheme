@@ -13,8 +13,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "22D55C2514FB8B840052EA01"
-               BuildableName = "libECUnitTestsMac.a"
+               BlueprintIdentifier = "22BEA1BE15DA55920036A04F"
+               BuildableName = "ECUnitTestsMac.framework"
                BlueprintName = "ECUnitTestsMac"
                ReferencedContainer = "container:ECUnitTests.xcodeproj">
             </BuildableReference>
