@@ -6,19 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		221662D514FB914E009B975D /* ECUnitTestsEverything */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 221662D614FB914E009B975D /* Build configuration list for PBXAggregateTarget "ECUnitTestsEverything" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = ECUnitTestsEverything;
-			productName = ECUnitTestsEverything;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		221CB5C715DAA817004C6398 /* Debug.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C415DAA817004C6398 /* Debug.pch */; };
 		221CB5C815DAA817004C6398 /* Debug.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C415DAA817004C6398 /* Debug.pch */; };
@@ -269,7 +256,7 @@
 		223269EC14FA98BB003055A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 223269EF14FA98BB003055A2 /* Build configuration list for PBXProject "ECUnitTests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -285,7 +272,6 @@
 			targets = (
 				22BEA1BE15DA55920036A04F /* ECUnitTestsMac */,
 				227A47B915DA5FA000281601 /* ECUnitTestIOS */,
-				221662D514FB914E009B975D /* ECUnitTestsEverything */,
 			);
 		};
 /* End PBXProject section */
@@ -360,65 +346,17 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		221662D714FB914E009B975D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		221662D814FB914E009B975D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		22326A1914FA98BC003055A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
 			};
 			name = Debug;
 		};
 		22326A1A14FA98BC003055A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(PROJECT_NAME)";
 			};
 			name = Release;
 		};
@@ -485,6 +423,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -503,6 +442,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Resources/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -511,15 +451,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		221662D614FB914E009B975D /* Build configuration list for PBXAggregateTarget "ECUnitTestsEverything" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				221662D714FB914E009B975D /* Debug */,
-				221662D814FB914E009B975D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		223269EF14FA98BB003055A2 /* Build configuration list for PBXProject "ECUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
