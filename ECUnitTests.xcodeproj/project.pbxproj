@@ -20,6 +20,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		221CB5C715DAA817004C6398 /* Debug.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C415DAA817004C6398 /* Debug.pch */; };
+		221CB5C815DAA817004C6398 /* Debug.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C415DAA817004C6398 /* Debug.pch */; };
+		221CB5C915DAA817004C6398 /* Release.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C515DAA817004C6398 /* Release.pch */; };
+		221CB5CA15DAA817004C6398 /* Release.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C515DAA817004C6398 /* Release.pch */; };
+		221CB5CB15DAA817004C6398 /* Shared.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C615DAA817004C6398 /* Shared.pch */; };
+		221CB5CC15DAA817004C6398 /* Shared.pch in Headers */ = {isa = PBXBuildFile; fileRef = 221CB5C615DAA817004C6398 /* Shared.pch */; };
 		227A47C715DA60F200281601 /* ECUnitTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 22BEA1C815DA55920036A04F /* ECUnitTests.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		227A47C815DA610100281601 /* ECParameterisedTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A4A14FA99B0003055A2 /* ECParameterisedTestCase.m */; };
 		227A47C915DA610100281601 /* ECTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 22326A4C14FA99B0003055A2 /* ECTestCase.m */; };
@@ -46,6 +52,9 @@
 		221CB5A115DA9BA8004C6398 /* ECIOSRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECIOSRelease.xcconfig; sourceTree = "<group>"; };
 		221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECMacDebug.xcconfig; sourceTree = "<group>"; };
 		221CB5A415DA9BA8004C6398 /* ECMacRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECMacRelease.xcconfig; sourceTree = "<group>"; };
+		221CB5C415DAA817004C6398 /* Debug.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.pch; sourceTree = "<group>"; };
+		221CB5C515DAA817004C6398 /* Release.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Release.pch; sourceTree = "<group>"; };
+		221CB5C615DAA817004C6398 /* Shared.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.pch; sourceTree = "<group>"; };
 		223269F814FA98BB003055A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		223269FB14FA98BB003055A2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		223269FC14FA98BB003055A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -96,11 +105,22 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		221CB5C315DAA817004C6398 /* Prefix */ = {
+			isa = PBXGroup;
+			children = (
+				221CB5C415DAA817004C6398 /* Debug.pch */,
+				221CB5C515DAA817004C6398 /* Release.pch */,
+				221CB5C615DAA817004C6398 /* Shared.pch */,
+			);
+			path = Prefix;
+			sourceTree = "<group>";
+		};
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
 				221CB51E15DA8BC7004C6398 /* README.md */,
 				221CB59E15DA9BA8004C6398 /* Configuration */,
+				221CB5C315DAA817004C6398 /* Prefix */,
 				22326A4814FA99B0003055A2 /* Generic */,
 				22BEA1F015DA57470036A04F /* Scripts */,
 				22BEA1C215DA55920036A04F /* Supporting Files */,
@@ -184,6 +204,9 @@
 				227A47CC15DA619D00281601 /* ECUnitTests.h in Headers */,
 				227A47CD15DA619D00281601 /* ECParameterisedTestCase.h in Headers */,
 				227A47CE15DA619D00281601 /* ECTestCase.h in Headers */,
+				221CB5C815DAA817004C6398 /* Debug.pch in Headers */,
+				221CB5CA15DAA817004C6398 /* Release.pch in Headers */,
+				221CB5CC15DAA817004C6398 /* Shared.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +217,9 @@
 				22BEA1CE15DA55E90036A04F /* ECParameterisedTestCase.h in Headers */,
 				22BEA1CF15DA55E90036A04F /* ECTestCase.h in Headers */,
 				227A47C715DA60F200281601 /* ECUnitTests.h in Headers */,
+				221CB5C715DAA817004C6398 /* Debug.pch in Headers */,
+				221CB5C915DAA817004C6398 /* Release.pch in Headers */,
+				221CB5CB15DAA817004C6398 /* Shared.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
