@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22BEA1BE15DA55920036A04F"
-               BuildableName = "ECUnitTestsMac.framework"
+               BuildableName = "ECUnitTests.framework"
                BlueprintName = "ECUnitTestsMac"
                ReferencedContainer = "container:ECUnitTests.xcodeproj">
             </BuildableReference>
@@ -37,6 +37,7 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      enableOpenGLFrameCaptureMode = "0"
       allowLocationSimulation = "YES">
       <AdditionalOptions>
       </AdditionalOptions>
