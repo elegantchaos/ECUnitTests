@@ -42,6 +42,10 @@
 		221CB4B815DA7DC4004C6398 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		221CB4BB15DA7DC4004C6398 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		221CB51E15DA8BC7004C6398 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECIOSDebug.xcconfig; sourceTree = "<group>"; };
+		221CB5A115DA9BA8004C6398 /* ECIOSRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECIOSRelease.xcconfig; sourceTree = "<group>"; };
+		221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECMacDebug.xcconfig; sourceTree = "<group>"; };
+		221CB5A415DA9BA8004C6398 /* ECMacRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ECMacRelease.xcconfig; sourceTree = "<group>"; };
 		223269F814FA98BB003055A2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		223269FB14FA98BB003055A2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		223269FC14FA98BB003055A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -81,10 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221CB59E15DA9BA8004C6398 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */,
+				221CB5A115DA9BA8004C6398 /* ECIOSRelease.xcconfig */,
+				221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */,
+				221CB5A415DA9BA8004C6398 /* ECMacRelease.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
 				221CB51E15DA8BC7004C6398 /* README.md */,
+				221CB59E15DA9BA8004C6398 /* Configuration */,
 				22326A4814FA99B0003055A2 /* Generic */,
 				22BEA1F015DA57470036A04F /* Scripts */,
 				22BEA1C215DA55920036A04F /* Supporting Files */,
@@ -382,6 +398,7 @@
 		};
 		227A47C515DA5FA000281601 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEAD_CODE_STRIPPING = NO;
@@ -405,6 +422,7 @@
 		};
 		227A47C615DA5FA000281601 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* ECIOSDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DEAD_CODE_STRIPPING = NO;
@@ -429,6 +447,7 @@
 		};
 		22BEA1CC15DA55920036A04F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -447,6 +466,7 @@
 		};
 		22BEA1CD15DA55920036A04F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* ECMacDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
