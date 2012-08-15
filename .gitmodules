@@ -1,0 +1,3 @@
+[submodule "Resources/Scripts/ocunit2junit"]
+	path = Resources/Scripts/ocunit2junit
+	url = https://github.com/ciryon/OCUnit2JUnit
