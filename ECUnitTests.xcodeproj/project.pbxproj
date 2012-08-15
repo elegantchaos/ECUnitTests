@@ -373,7 +373,6 @@
 			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Resources/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -383,7 +382,6 @@
 			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Resources/Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
