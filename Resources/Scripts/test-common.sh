@@ -72,5 +72,5 @@ report()
     cp "$testout" .
     "$base/../ECUnitTests/Resources/Scripts/ocunit2junit/ocunit2junit.rb" < "$testout"
 
-    rm -rf "$sym"
+#    rm -rf "$sym"
 }
