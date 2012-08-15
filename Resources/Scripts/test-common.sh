@@ -32,7 +32,7 @@ macbuild()
     if $testMac ; then
 
         echo "Building mac scheme $1"
-        xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "macosx" -config "$config" $2 >> "$testout" 2>&1
+        xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "macosx" -config "$config" $2 OBJROOT="$obj" SYMROOT="$sym" >> "$testout" 2>&1
         result=$?
         if [[ $result != 0 ]]; then
             echo "Build failed for scheme $1"
@@ -48,13 +48,13 @@ iosbuild()
 
         if [[ $2 == "test" ]];
         then
-            action=build TEST_AFTER_BUILD=YES
+            action="build TEST_AFTER_BUILD=YES"
         else
             action=$2
         fi
 
         echo "Building iOS scheme $1"
-        xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "iphonesimulator" -arch i386 -config "$config" $action >> "$testout" 2>&1
+        xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "iphonesimulator" -arch i386 -config "$config" OBJROOT="$obj" SYMROOT="$sym" $action >> "$testout" 2>&1
         result=$?
         if [[ $result != 0 ]]; then
             echo "Build failed for scheme $1"
