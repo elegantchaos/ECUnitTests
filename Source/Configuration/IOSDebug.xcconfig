@@ -16,5 +16,5 @@
 // You can fix this by adding a symbolic link called ECConfig that points to the right place.
 
 #include "../ECConfig/Source/Configuration/ECIOSFrameworkDebug.xcconfig"
-#include "../ECConfig/Source/Configuration/ECUnitTests.xcconfig"
+FRAMEWORK_SEARCH_PATHS = "$(UNIT_TEST_FRAMEWORK_PATH)"
 

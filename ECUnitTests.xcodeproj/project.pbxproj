@@ -106,9 +106,8 @@
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
-				2251BA5015DBD0CB00F2FE40 /* Source */,
-				226153A915DAD5F1006783C3 /* Foundation.framework */,
 				221CB51E15DA8BC7004C6398 /* README.md */,
+				2251BA5015DBD0CB00F2FE40 /* Source */,
 				22BEA1F015DA57470036A04F /* Scripts */,
 				22BEA1C215DA55920036A04F /* Supporting Files */,
 				223269F714FA98BB003055A2 /* Frameworks */,
@@ -128,6 +127,7 @@
 		223269F714FA98BB003055A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				226153A915DAD5F1006783C3 /* Foundation.framework */,
 				223269F814FA98BB003055A2 /* Cocoa.framework */,
 				22326A0A14FA98BB003055A2 /* SenTestingKit.framework */,
 				221662C014FB900C009B975D /* Foundation.framework */,
