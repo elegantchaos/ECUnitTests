@@ -57,7 +57,7 @@
 		22BEA1BF15DA55920036A04F /* ECUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ECUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BEA1C315DA55920036A04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		22BEA1C815DA55920036A04F /* ECUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECUnitTests.h; sourceTree = "<group>"; };
-		22BEA1F115DA57470036A04F /* ocunit2junit.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = ocunit2junit.rb; sourceTree = "<group>"; };
+		22BEA1F115DA57470036A04F /* ocunit2junit.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; name = ocunit2junit.rb; path = ocunit2junit/ocunit2junit.rb; sourceTree = "<group>"; };
 		22BEA1F215DA57470036A04F /* test-common.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "test-common.sh"; sourceTree = "<group>"; };
 		22BEA1F715DA581D0036A04F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
