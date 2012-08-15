@@ -68,7 +68,7 @@ report()
 {
     echo "Reporting test results"
     cp "$testout" .
-    "$base/ocunit2junit/ocunit2junit.rb" < "$testout"
+    "$base/../ECUnitTests/Resources/Scripts/ocunit2junit/ocunit2junit.rb" < "$testout"
 
     rm -rf "$sym"
 }
