@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "227A47B915DA5FA000281601"
-               BuildableName = "ECUnitTests.framework"
+               BuildableName = ".bundle"
                BlueprintName = "ECUnitTestIOS"
                ReferencedContainer = "container:ECUnitTests.xcodeproj">
             </BuildableReference>
@@ -52,7 +52,6 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      enableOpenGLFrameCaptureMode = "0"
       allowLocationSimulation = "YES">
       <AdditionalOptions>
       </AdditionalOptions>

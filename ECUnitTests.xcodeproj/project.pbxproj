@@ -106,11 +106,9 @@
 		223269EA14FA98BB003055A2 = {
 			isa = PBXGroup;
 			children = (
+				2251BA5015DBD0CB00F2FE40 /* Source */,
 				226153A915DAD5F1006783C3 /* Foundation.framework */,
 				221CB51E15DA8BC7004C6398 /* README.md */,
-				221CB59E15DA9BA8004C6398 /* Configuration */,
-				221CB5C315DAA817004C6398 /* Prefix */,
-				22326A4814FA99B0003055A2 /* Generic */,
 				22BEA1F015DA57470036A04F /* Scripts */,
 				22BEA1C215DA55920036A04F /* Supporting Files */,
 				223269F714FA98BB003055A2 /* Frameworks */,
@@ -161,6 +159,16 @@
 				22326A4C14FA99B0003055A2 /* ECTestCase.m */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		2251BA5015DBD0CB00F2FE40 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				221CB59E15DA9BA8004C6398 /* Configuration */,
+				221CB5C315DAA817004C6398 /* Prefix */,
+				22326A4814FA99B0003055A2 /* Generic */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		22BEA1C215DA55920036A04F /* Supporting Files */ = {
@@ -385,7 +393,6 @@
 			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -401,7 +408,6 @@
 			baseConfigurationReference = 221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
