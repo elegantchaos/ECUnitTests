@@ -23,7 +23,7 @@ testout="$sym/test.log"
 testMac=true
 testIOS=true
 
-config="Release"
+config="Debug"
 
 status=0
 
@@ -35,8 +35,9 @@ macbuild()
         xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "macosx" -config "$config" $2 OBJROOT="$obj" SYMROOT="$sym" >> "$testout" 2>&1
         result=$?
         if [[ $result != 0 ]]; then
+            cat "$testout"
             echo "Build failed for scheme $1"
-            status=$result
+            exit $result
         fi
 
     fi
@@ -57,8 +58,9 @@ iosbuild()
         xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "iphonesimulator" -arch i386 -config "$config" OBJROOT="$obj" SYMROOT="$sym" $action >> "$testout" 2>&1
         result=$?
         if [[ $result != 0 ]]; then
+            cat "$testout"
             echo "Build failed for scheme $1"
-            status=$result
+            exit $result
         fi
 
     fi

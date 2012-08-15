@@ -428,7 +428,7 @@
 				22326A1A14FA98BC003055A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		227A47C415DA5FA000281601 /* Build configuration list for PBXNativeTarget "ECUnitTestIOS" */ = {
 			isa = XCConfigurationList;
@@ -437,7 +437,7 @@
 				227A47C615DA5FA000281601 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		22BEA1CB15DA55920036A04F /* Build configuration list for PBXNativeTarget "ECUnitTestsMac" */ = {
 			isa = XCConfigurationList;
@@ -446,7 +446,7 @@
 				22BEA1CD15DA55920036A04F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
