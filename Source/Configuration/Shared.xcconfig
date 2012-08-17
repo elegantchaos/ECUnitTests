@@ -4,10 +4,8 @@
 //  liberal license: http://www.elegantchaos.com/license/liberal
 // --------------------------------------------------------------------------
 
-/// Standard xcconfig files.
-/// The use of a relative path here relies on ECConfig being in a known location. See <ImportNote> in the documentation for more details.
+/// Since all of the targets link against SenTestKit, we need to be able to find it.
+/// It's in a different location on the Mac and iOS, but luckily our standard xcconfig
+/// files define a setting UNIT_TEST_FRAMEWORK_PATH with its location:
 
-#include "../ECConfig/Source/Configuration/ECIOSDebug.xcconfig"
-#include "../ECConfig/Source/Configuration/ECPseudoFramework.xcconfig"
-#include "Shared.xcconfig"
-
+FRAMEWORK_SEARCH_PATHS = "$(UNIT_TEST_FRAMEWORK_PATH)"

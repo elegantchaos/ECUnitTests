@@ -54,6 +54,7 @@
 		226153A915DAD5F1006783C3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		227A47BA15DA5FA000281601 /* ECUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ECUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		227A47BB15DA5FA000281601 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		228614E715DEB502000D74EB /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		22BEA1BF15DA55920036A04F /* ECUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ECUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22BEA1C315DA55920036A04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		22BEA1C815DA55920036A04F /* ECUnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ECUnitTests.h; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 				221CB5A115DA9BA8004C6398 /* IOSRelease.xcconfig */,
 				221CB5A315DA9BA8004C6398 /* MacDebug.xcconfig */,
 				221CB5A415DA9BA8004C6398 /* MacRelease.xcconfig */,
+				228614E715DEB502000D74EB /* Shared.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
