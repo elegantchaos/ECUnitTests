@@ -19,7 +19,7 @@ sym="$build/sym"
 obj="$build/obj"
 
 rm -rf "$build"
-mkdir -p "$build/test-reports"
+mkdir -p "$build"
 
 testout="$build/out.log"
 testerr="$build/err.log"
@@ -38,7 +38,9 @@ report()
 {
 #    pushd "$build" > /dev/null
     "$ocunit2junit" < "$testout" > /dev/null
-    mv test-reports/* "$build/test-reports/" > /dev/null
+    reportdir="$build/reports/$2/$1"
+    mkdir -p "$reportdir"
+    mv test-reports/* "$reportdir" 2> /dev/null
     rmdir test-reports
 #    popd > /dev/null
 }
@@ -56,7 +58,7 @@ commonbuild()
         exit $result
     fi
 
-    report
+    report "$1" "$3"
 
     failures=`grep failed "$testout"`
     if [[ $failures != "" ]]; then
