@@ -19,29 +19,61 @@ sym="$build/sym"
 obj="$build/obj"
 
 rm -rf "$build"
-mkdir -p "$build"
+mkdir -p "$build/test-reports"
 
-testout="$build/test.log"
+testout="$build/out.log"
+testerr="$build/err.log"
 
-testMac=true
-testIOS=true
+#if [[ "$testMac" == "" ]]; then
+#    testMac=true
+#fi
+
+#if [[ "$testIOS" == "" ]]; then
+#    testIOS=true
+#if
 
 config="Debug"
 
-status=0
+report()
+{
+#    pushd "$build" > /dev/null
+    "$ocunit2junit" < "$testout" > /dev/null
+    mv test-reports/* "$build/test-reports/" > /dev/null
+    rmdir test-reports
+#    popd > /dev/null
+}
+
+commonbuild()
+{
+    echo "Building $1 for $3"
+    xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "$3" $4 -config "$config" $2 OBJROOT="$obj" SYMROOT="$sym" > "$testout" 2> "$testerr"
+    result=$?
+    if [[ $result != 0 ]]; then
+        cat "$testerr"
+        echo
+        echo "** BUILD FAILURES **"
+        echo "Build failed for scheme $1"
+        exit $result
+    fi
+
+    report
+
+    failures=`grep failed "$testout"`
+    if [[ $failures != "" ]]; then
+        echo $failures
+        echo
+        echo "** UNIT TEST FAILURES **"
+        echo "Tests failed for scheme $1"
+        exit $result
+    fi
+
+}
 
 macbuild()
 {
     if $testMac ; then
 
-        echo "Building mac scheme $1"
-        xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "macosx" -config "$config" $2 OBJROOT="$obj" SYMROOT="$sym" >> "$testout" 2>&1
-        result=$?
-        if [[ $result != 0 ]]; then
-            cat "$testout"
-            echo "Build failed for scheme $1"
-            exit $result
-        fi
+        commonbuild "$1" "$2" "macosx"
 
     fi
 }
@@ -57,22 +89,8 @@ iosbuild()
             action=$2
         fi
 
-        echo "Building iOS scheme $1"
-        xcodebuild -workspace "$project.xcworkspace" -scheme "$1" -sdk "iphonesimulator" -arch i386 -config "$config" OBJROOT="$obj" SYMROOT="$sym" $action >> "$testout" 2>&1
-        result=$?
-        if [[ $result != 0 ]]; then
-            cat "$testout"
-            echo "Build failed for scheme $1"
-            exit $result
-        fi
+        commonbuild "$1" "$action" "iphonesimulator" "-arch i386"
 
     fi
 }
 
-report()
-{
-    echo "Reporting test results"
-    pushd "$build" > /dev/null
-    "$ocunit2junit" < "$testout"
-    popd > /dev/null
-}
