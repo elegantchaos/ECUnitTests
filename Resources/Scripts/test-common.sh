@@ -104,8 +104,16 @@ iosbuildproject()
         echo Building target $2 of project $1
 
         cd "$1"
-        xcodebuild -project "$1.xcodeproj" -config "$config" -target "$2" -arch i386 -sdk "iphonesimulator" build OBJROOT="$obj" SYMROOT="$sym" >> "$testout" 2>> "$testerr"
+        xcodebuild -project "$1.xcodeproj" -config "$config" -target "$2" -arch i386 -sdk "iphonesimulator" build OBJROOT="$obj" SYMROOT="$sym" > "$testout" 2> "$testerr"
+        result=$?
         cd ..
+        if [[ $result != 0 ]]; then
+            cat "$testerr"
+            echo
+            echo "** BUILD FAILURES **"
+            echo "Build failed for scheme $1"
+        exit $result
+        fi
 
     fi
 
@@ -119,8 +127,16 @@ iostestproject()
         echo Testing target $2 of project $1
 
         cd "$1"
-        xcodebuild -project "$1.xcodeproj" -config "$config" -target "$2" -arch i386 -sdk "iphonesimulator" build OBJROOT="$obj" SYMROOT="$sym" TEST_AFTER_BUILD=YES >> "$testout" 2>> "$testerr"
+        xcodebuild -project "$1.xcodeproj" -config "$config" -target "$2" -arch i386 -sdk "iphonesimulator" build OBJROOT="$obj" SYMROOT="$sym" TEST_AFTER_BUILD=YES > "$testout" 2> "$testerr"
+        result=$?
         cd ..
+        if [[ $result != 0 ]]; then
+            cat "$testerr"
+            echo
+            echo "** BUILD FAILURES **"
+            echo "Build failed for scheme $1"
+            exit $result
+        fi
 
         report "$1" "iphonesimulator"
 

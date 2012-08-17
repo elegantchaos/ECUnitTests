@@ -225,9 +225,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		227A47B915DA5FA000281601 /* ECUnitTestIOS */ = {
+		227A47B915DA5FA000281601 /* ECUnitTestsIOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 227A47C415DA5FA000281601 /* Build configuration list for PBXNativeTarget "ECUnitTestIOS" */;
+			buildConfigurationList = 227A47C415DA5FA000281601 /* Build configuration list for PBXNativeTarget "ECUnitTestsIOS" */;
 			buildPhases = (
 				227A47B615DA5FA000281601 /* Sources */,
 				227A47CB15DA619100281601 /* Headers */,
@@ -239,7 +239,7 @@
 			);
 			dependencies = (
 			);
-			name = ECUnitTestIOS;
+			name = ECUnitTestsIOS;
 			productName = ECUnitTestIOSAgain;
 			productReference = 227A47BA15DA5FA000281601 /* ECUnitTests.framework */;
 			productType = "com.apple.product-type.bundle";
@@ -283,7 +283,7 @@
 			projectRoot = "";
 			targets = (
 				22BEA1BE15DA55920036A04F /* ECUnitTestsMac */,
-				227A47B915DA5FA000281601 /* ECUnitTestIOS */,
+				227A47B915DA5FA000281601 /* ECUnitTestsIOS */,
 			);
 		};
 /* End PBXProject section */
@@ -428,7 +428,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		227A47C415DA5FA000281601 /* Build configuration list for PBXNativeTarget "ECUnitTestIOS" */ = {
+		227A47C415DA5FA000281601 /* Build configuration list for PBXNativeTarget "ECUnitTestsIOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				227A47C515DA5FA000281601 /* Debug */,
