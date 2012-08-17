@@ -96,3 +96,34 @@ iosbuild()
     fi
 }
 
+iosbuildproject()
+{
+
+    if $testIOS; then
+
+        echo Building target $2 of project $1
+
+        cd "$1"
+        xcodebuild -project "$1.xcodeproj" -config "$config" -target "$2" -arch i386 -sdk "iphonesimulator" build OBJROOT="$obj" SYMROOT="$sym" >> "$testout" 2>> "$testerr"
+        cd ..
+
+    fi
+
+}
+
+iostestproject()
+{
+
+    if $testIOS; then
+
+        echo Testing target $2 of project $1
+
+        cd "$1"
+        xcodebuild -project "$1.xcodeproj" -config "$config" -target "$2" -arch i386 -sdk "iphonesimulator" build OBJROOT="$obj" SYMROOT="$sym" TEST_AFTER_BUILD=YES >> "$testout" 2>> "$testerr"
+        cd ..
+
+        report "$1" "iphonesimulator"
+
+    fi
+
+}
