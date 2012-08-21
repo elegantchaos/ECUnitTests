@@ -374,7 +374,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */;
 			buildSettings = {
-				INFOPLIST_FILE = Resources/Info.plist;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -383,7 +382,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 221CB5A015DA9BA8004C6398 /* IOSDebug.xcconfig */;
 			buildSettings = {
-				INFOPLIST_FILE = Resources/Info.plist;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -396,7 +394,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -410,7 +407,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Resources/Info.plist;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
