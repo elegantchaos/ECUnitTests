@@ -21,6 +21,7 @@ NSString *const TestItemsKey = @"ECTestItems";
 NSString *const SuiteItemsKey = @"ECTestSuites";
 NSString *const SettingsKey = @"settings";
 NSString *const IncludesKey = @"includes";
+NSString *const DataURLKey = @"ECTestSuiteDataURL";
 
 NSString *const SuiteExtension = @"testsuite";
 
@@ -141,6 +142,9 @@ NSString *const SuiteExtension = @"testsuite";
                 [result setObject:value forKey:name];
             }
         }
+
+        [result setObject:folder forKey:DataURLKey];
+
     }
     
     if (settings)
@@ -149,7 +153,7 @@ NSString *const SuiteExtension = @"testsuite";
         [temp addEntriesFromDictionary:settings];
         [result setObject:temp forKey:SettingsKey];
     }
-    
+
     return result;
 }
 

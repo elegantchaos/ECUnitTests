@@ -6,10 +6,11 @@
 
 #import "ECTestCase.h"
 
+extern NSString *const DataURLKey;
+extern NSString *const IncludesKey;
+extern NSString *const SettingsKey;
 extern NSString *const TestItemsKey;
 extern NSString *const SuiteItemsKey;
-extern NSString *const SettingsKey;
-extern NSString *const IncludesKey;
 
 // --------------------------------------------------------------------------
 ///This subclass has some extra support to help with
